@@ -1,8 +1,9 @@
-import { StyleSheet, View, Text, FlatList, Image } from "react-native";
+import { StyleSheet, Text, FlatList } from "react-native";
 import { useState, useEffect } from "react";
 import { useTheme } from "../../contexts/ThemeContext";
 import AnimeTile from "./AnimeTile";
 import LoadingIndicator from "../shared/LoadingIndicator";
+import { JikanApi } from "../../services/JikanApi";
 
 export default function RecommendedView() {
   const { theme } = useTheme();
@@ -13,13 +14,6 @@ export default function RecommendedView() {
   const [page, setPage] = useState(1);
   const [hasNextPage, setHasNextPage] = useState(true);
 
-  async function fetchAiringAnime(page) {
-    const response = await fetch(
-      `https://api.jikan.moe/v4/top/anime?filter='airing'&limit=24&page=${page}`
-    );
-    return await response.json();
-  }
-
   function fetchNextPage() {
     setPage((prevPage) => prevPage + 1);
   }
@@ -28,7 +22,7 @@ export default function RecommendedView() {
     if (hasNextPage) {
       (async function () {
         try {
-          const data = await fetchAiringAnime(page);
+          const data = await JikanApi.fetchAiringAnime(page);
           // const formattedData = data.data.map((anime) => {
           //   return {
           //     mal_id: anime.mal_id,
