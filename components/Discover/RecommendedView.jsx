@@ -83,5 +83,7 @@ const styles = (theme) =>
     },
     theEndText: {
       color: theme.primaryTextColor,
+      textAlign: "center",
+      marginVertical: 5,
     },
   });
