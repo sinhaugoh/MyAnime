@@ -1,10 +1,10 @@
 import { View, Text, TextInput, StyleSheet } from "react-native";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-import RecommendedView from "../components/Discover/RecommendedView";
-import ForYouView from "../components/Discover/ForYouView";
-import TopRankedView from "../components/Discover/TopRankedView";
+import RecommendedView from "../../components/Discover/RecommendedView";
+import ForYouView from "../../components/Discover/ForYouView";
+import TopRankedView from "../../components/Discover/TopRankedView";
 import { Feather } from "@expo/vector-icons";
-import { useTheme } from "../contexts/ThemeContext";
+import { useTheme } from "../../contexts/ThemeContext";
 
 const Tab = createMaterialTopTabNavigator();
 

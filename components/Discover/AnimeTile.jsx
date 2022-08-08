@@ -1,16 +1,27 @@
-import { View, Image, Text, StyleSheet } from "react-native";
+import { View, Image, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { useTheme } from "../../contexts/ThemeContext";
+import { useNavigation } from "@react-navigation/native";
 
 export default function AnimeTile({ title, image_url }) {
   const { theme } = useTheme();
   const themedStyle = styles(theme);
+  const navigation = useNavigation();
+
+  function handleOnPress() {
+    navigation.navigate("Anime detail");
+  }
+
   return (
-    <View style={themedStyle.container}>
+    <TouchableOpacity
+      style={themedStyle.container}
+      activeOpacity={0.8}
+      onPress={handleOnPress}
+    >
       <Image source={{ uri: image_url }} style={themedStyle.image} />
       <Text numberOfLines={2} ellipsizeMode="tail" style={themedStyle.title}>
         {title}
       </Text>
-    </View>
+    </TouchableOpacity>
   );
 }
 
