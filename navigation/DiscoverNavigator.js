@@ -1,6 +1,6 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import DiscoverScreen from "../screens/Discover/DiscoverScreen";
-import AnimeDetailScreen from "../screens/Discover/AnimeDetailScreen";
+import AnimeDetailScreen from "../screens/AnimeDetail/AnimeDetailScreen";
 import { useTheme } from "../contexts/ThemeContext";
 
 const Stack = createStackNavigator();
