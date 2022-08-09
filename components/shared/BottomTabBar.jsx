@@ -19,6 +19,7 @@ export default function BottomTabBar() {
             borderTopColor: theme.bottomTabBarColor,
             backgroundColor: theme.bottomTabBarColor,
           },
+          tabBarActiveTintColor: theme.primaryTextColor,
         }}
       >
         <Tab.Screen name="Discover" component={DiscoverNavigator} />

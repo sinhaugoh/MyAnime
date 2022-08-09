@@ -18,6 +18,8 @@ export default function DiscoverNavigator() {
         headerTitleStyle: {
           color: theme.primaryTextColor,
         },
+        headerTintColor: theme.primaryTextColor,
+        headerBackTitleVisible: false,
       }}
     >
       <Stack.Screen
