@@ -1,11 +1,11 @@
-import { StyleSheet, Text, FlatList } from "react-native";
+import { StyleSheet, Text, FlatList, View } from "react-native";
 import { useState, useEffect } from "react";
 import { useTheme } from "../../contexts/ThemeContext";
 import AnimeTile from "./AnimeTile";
 import LoadingIndicator from "../shared/LoadingIndicator";
 import { JikanApi } from "../../services/JikanApi";
 
-export default function TopRankedView() {
+export default function RecommendedView() {
   const { theme } = useTheme();
   const themedStyle = styles(theme);
   const [isLoading, setIsLoading] = useState(true);
@@ -22,14 +22,7 @@ export default function TopRankedView() {
     if (hasNextPage) {
       (async function () {
         try {
-          const data = await JikanApi.fetchTopRankedAnime(page);
-          // const formattedData = data.data.map((anime) => {
-          //   return {
-          //     mal_id: anime.mal_id,
-          //     title: anime.title_english,
-          //     image_url: anime.images.jpg.image_url,
-          //   };
-          // });
+          const data = await JikanApi.fetchAiringAnime(page);
 
           // append the data into data list
           setData((prevData) => [...prevData, ...data.data]);
@@ -53,7 +46,21 @@ export default function TopRankedView() {
       data={data}
       numColumns={3}
       renderItem={({ item }) => (
-        <AnimeTile title={item.title} image_url={item.images.jpg.image_url} />
+        <AnimeTile
+          mal_id={item.mal_id}
+          title={item.title}
+          japaneseTitle={item.title_japanese}
+          image_url={item.images.jpg.image_url}
+          type={item.type}
+          episodes={item.episodes}
+          year={item.year}
+          studios={item.studios}
+          ageRating={item.rating}
+          rating={item.score}
+          rank={item.rank}
+          genres={item.genres.map((genre) => genre.name)}
+          synopsis={item.synopsis}
+        />
       )}
       style={themedStyle.container}
       ListFooterComponent={

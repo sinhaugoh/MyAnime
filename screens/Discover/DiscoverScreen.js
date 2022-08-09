@@ -28,6 +28,8 @@ export default function DiscoverScreen() {
         />
       </View>
       <Tab.Navigator
+        //TODO: try to fix this problem for 13 pro max
+        style={{ backgroundColor: theme.primaryBackgroundColor }}
         screenOptions={{
           tabBarLabelStyle: {
             color: theme.primaryTextColor,

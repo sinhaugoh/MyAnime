@@ -5,7 +5,7 @@ import AnimeTile from "./AnimeTile";
 import LoadingIndicator from "../shared/LoadingIndicator";
 import { JikanApi } from "../../services/JikanApi";
 
-export default function RecommendedView() {
+export default function TopRankedView() {
   const { theme } = useTheme();
   const themedStyle = styles(theme);
   const [isLoading, setIsLoading] = useState(true);
@@ -22,12 +22,20 @@ export default function RecommendedView() {
     if (hasNextPage) {
       (async function () {
         try {
-          const data = await JikanApi.fetchAiringAnime(page);
+          const data = await JikanApi.fetchTopRankedAnime(page);
+          // const formattedData = data.data.map((anime) => {
+          //   return {
+          //     mal_id: anime.mal_id,
+          //     title: anime.title_english,
+          //     image_url: anime.images.jpg.image_url,
+          //   };
+          // });
 
           // append the data into data list
           setData((prevData) => [...prevData, ...data.data]);
           setHasNextPage(data.pagination.has_next_page);
         } catch (e) {
+          console.log(e);
           setError(e);
         } finally {
           setIsLoading(false);

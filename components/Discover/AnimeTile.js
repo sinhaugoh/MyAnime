@@ -3,13 +3,13 @@ import { useTheme } from "../../contexts/ThemeContext";
 import { useNavigation } from "@react-navigation/native";
 import { RFPercentage } from "react-native-responsive-fontsize";
 
-export default function AnimeTile({ title, image_url }) {
+export default function AnimeTile(props) {
   const { theme } = useTheme();
   const themedStyle = styles(theme);
   const navigation = useNavigation();
 
   function handleOnPress() {
-    navigation.navigate("Anime detail");
+    navigation.navigate("Anime detail", props);
   }
 
   return (
@@ -18,9 +18,9 @@ export default function AnimeTile({ title, image_url }) {
       activeOpacity={0.8}
       onPress={handleOnPress}
     >
-      <Image source={{ uri: image_url }} style={themedStyle.image} />
+      <Image source={{ uri: props.image_url }} style={themedStyle.image} />
       <Text numberOfLines={2} ellipsizeMode="tail" style={themedStyle.title}>
-        {title}
+        {props.title}
       </Text>
     </TouchableOpacity>
   );
