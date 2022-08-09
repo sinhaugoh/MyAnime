@@ -40,6 +40,7 @@ export default function DiscoverScreen() {
           tabBarIndicatorStyle: {
             backgroundColor: theme.primaryTextColor,
           },
+          lazy: true,
         }}
       >
         <Tab.Screen name="Recommended" component={RecommendedView} />
@@ -53,9 +54,9 @@ export default function DiscoverScreen() {
 const styles = (theme) =>
   StyleSheet.create({
     searchContainer: {
-      backgroundColor: theme.primaryBackgroundColor,
       paddingHorizontal: "5%",
       position: "relative",
+      backgroundColor: theme.primaryBackgroundColor,
     },
     searchInput: {
       backgroundColor: "#34373E",
