@@ -1,6 +1,7 @@
 import { View, Image, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { useTheme } from "../../contexts/ThemeContext";
 import { useNavigation } from "@react-navigation/native";
+import { RFPercentage } from "react-native-responsive-fontsize";
 
 export default function AnimeTile({ title, image_url }) {
   const { theme } = useTheme();
@@ -39,5 +40,6 @@ const styles = (theme) =>
     },
     title: {
       color: theme.primaryTextColor,
+      fontSize: RFPercentage(2.2),
     },
   });
