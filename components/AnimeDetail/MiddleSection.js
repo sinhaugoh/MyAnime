@@ -13,8 +13,6 @@ export default function MiddleSection({ route }) {
       <ThemedText style={styles.text}>{genres.join(" • ")}</ThemedText>
       <ThemedText style={styles.boldText}>Synopsis</ThemedText>
       <ThemedText style={styles.text}>{synopsis}</ThemedText>
-      <ThemedText style={styles.boldText}>Characters</ThemedText>
-      <ThemedText style={styles.boldText}>Recommanded</ThemedText>
     </View>
   );
 }

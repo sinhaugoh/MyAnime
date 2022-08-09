@@ -3,6 +3,7 @@ import { createMaterialTopTabNavigator } from "@react-navigation/material-top-ta
 import RecommendedView from "../../components/Discover/RecommendedView";
 import ForYouView from "../../components/Discover/ForYouView";
 import TopRankedView from "../../components/Discover/TopRankedView";
+import LoadingIndicator from "../../components/shared/LoadingIndicator";
 import { Feather } from "@expo/vector-icons";
 import { useTheme } from "../../contexts/ThemeContext";
 
@@ -41,6 +42,7 @@ export default function DiscoverScreen() {
             backgroundColor: theme.primaryTextColor,
           },
           lazy: true,
+          lazyPlaceholder: () => <LoadingIndicator />,
         }}
       >
         <Tab.Screen name="Recommended" component={RecommendedView} />
