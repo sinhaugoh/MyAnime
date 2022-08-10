@@ -5,23 +5,22 @@ import ThemedView from "../../components/shared/ThemedView";
 import CharactersSection from "../../components/AnimeDetail/CharactersSection";
 import RecommendedSection from "../../components/AnimeDetail/RecommendedSection";
 
-export default function AnimeDetailScreen({ route }) {
-  const {
-    mal_id,
-    title,
-    japaneseTitle,
-    genres,
-    synopsis,
-    image_url,
-    type,
-    episodes,
-    year,
-    studios,
-    ageRating,
-    rank,
-    rating,
-  } = route.params;
-
+export default function AnimeDetail({
+  mal_id,
+  title,
+  japaneseTitle,
+  genres,
+  synopsis,
+  image_url,
+  type,
+  episodes,
+  year,
+  studios,
+  ageRating,
+  rank,
+  rating,
+}) {
+  console.log(mal_id);
   return (
     <ThemedView style={styles.container}>
       <ScrollView style={styles.scrollView}>

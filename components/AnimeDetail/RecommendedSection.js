@@ -12,9 +12,10 @@ export default function RecommendedSection({ mal_id }) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    let controller = new AbortController();
     (async () => {
       try {
-        const data = await JikanApi.fetchRecommendedAnime(mal_id);
+        const data = await JikanApi.fetchRecommendedAnime(mal_id, controller);
         setRecommendationsData(data.data);
       } catch (e) {
         console.log(e);
@@ -23,6 +24,8 @@ export default function RecommendedSection({ mal_id }) {
         setIsLoading(false);
       }
     })();
+
+    return () => controller.abort();
   }, []);
 
   if (isLoading) return <LoadingIndicator />;
@@ -33,17 +36,21 @@ export default function RecommendedSection({ mal_id }) {
   return (
     <>
       <ThemedText style={styles.title}>Recommended</ThemedText>
-      <FlatList
-        data={recommendationsData}
-        renderItem={({ item }) => (
-          <MemoizedCardTile
-            image_url={item.entry.images.jpg.image_url}
-            title={item.entry.title}
-          />
-        )}
-        horizontal={true}
-        showsHorizontalScrollIndicator={false}
-      />
+      {recommendationsData.length > 0 ? (
+        <FlatList
+          data={recommendationsData}
+          renderItem={({ item }) => (
+            <MemoizedCardTile
+              image_url={item.entry.images.jpg.image_url}
+              title={item.entry.title}
+            />
+          )}
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
+        />
+      ) : (
+        <ThemedText>No information provided.</ThemedText>
+      )}
     </>
   );
 }

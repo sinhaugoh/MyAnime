@@ -12,9 +12,10 @@ export default function CharactersSection({ mal_id }) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    let controller = new AbortController();
     (async () => {
       try {
-        const data = await JikanApi.fetchAnimeCharacters(mal_id);
+        const data = await JikanApi.fetchAnimeCharacters(mal_id, controller);
         setCharactersData(data.data);
       } catch (e) {
         console.log(e);
@@ -23,6 +24,8 @@ export default function CharactersSection({ mal_id }) {
         setIsLoading(false);
       }
     })();
+
+    return () => controller.abort();
   }, []);
 
   if (isLoading) return <LoadingIndicator />;
@@ -33,18 +36,22 @@ export default function CharactersSection({ mal_id }) {
   return (
     <>
       <ThemedText style={styles.title}>Characters</ThemedText>
-      <FlatList
-        data={charactersData}
-        renderItem={({ item }) => (
-          <MemoizedCardTile
-            image_url={item.character.images.jpg.image_url}
-            title={item.character.name}
-          />
-        )}
-        horizontal={true}
-        showsHorizontalScrollIndicator={false}
-        style={styles.flatList}
-      />
+      {charactersData?.length > 0 ? (
+        <FlatList
+          data={charactersData}
+          renderItem={({ item }) => (
+            <MemoizedCardTile
+              image_url={item.character.images.jpg.image_url}
+              title={item.character.name}
+            />
+          )}
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
+          style={styles.flatList}
+        />
+      ) : (
+        <ThemedText>No information provided.</ThemedText>
+      )}
     </>
   );
 }

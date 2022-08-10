@@ -21,24 +21,24 @@ export default function TopSection({
         <View style={styles.row}>
           <View style={styles.col}>
             <ThemedText style={[styles.bold, styles.text]}>Type</ThemedText>
-            <ThemedText style={styles.text}>{type}</ThemedText>
+            <ThemedText style={styles.text}>{type ?? "-"}</ThemedText>
           </View>
           <Spacer />
           <View style={styles.col}>
             <ThemedText style={[styles.bold, styles.text]}>Episodes</ThemedText>
-            <ThemedText style={styles.text}>{episodes}</ThemedText>
+            <ThemedText style={styles.text}>{episodes ?? "-"}</ThemedText>
           </View>
         </View>
         <View style={styles.row}>
           <View style={styles.col}>
             <ThemedText style={[styles.bold, styles.text]}>Year</ThemedText>
-            <ThemedText style={styles.text}>{year}</ThemedText>
+            <ThemedText style={styles.text}>{year ?? "-"}</ThemedText>
           </View>
           <Spacer />
           <View style={styles.col}>
             <ThemedText style={[styles.bold, styles.text]}>Episodes</ThemedText>
             <ThemedText style={styles.text}>
-              {studios?.[0]?.name ?? "No info"}
+              {studios?.[0]?.name ?? "-"}
             </ThemedText>
           </View>
         </View>
@@ -47,20 +47,22 @@ export default function TopSection({
             <ThemedText style={[styles.bold, styles.text]}>
               Age rating
             </ThemedText>
-            <ThemedText style={styles.text}>{ageRating}</ThemedText>
+            <ThemedText style={styles.text}>{ageRating ?? "-"}</ThemedText>
           </View>
         </View>
         <View style={[styles.row, styles.justifyBetween]}>
           <View style={styles.col}>
             <ThemedText style={[styles.bold, styles.text]}>Rank</ThemedText>
             <ThemedText style={[styles.bigText, styles.bold]}>
-              # {rank}
+              {rank ? `# ${rank}` : "-"}
             </ThemedText>
           </View>
           <View style={styles.col}>
             <ThemedText style={[styles.bold, styles.text]}>Rating</ThemedText>
             <ThemedText style={[styles.bigText, styles.bold]}>
-              {rating.toFixed(1)} / 10
+              {rating === null || rating === undefined
+                ? "-"
+                : `${rating.toFixed(1)} / 10`}
             </ThemedText>
           </View>
         </View>

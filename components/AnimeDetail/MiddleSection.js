@@ -13,9 +13,13 @@ export default function MiddleSection({
       <ThemedText style={styles.header}>{title}</ThemedText>
       <ThemedText style={styles.subheader}>{japaneseTitle}</ThemedText>
       <ThemedText style={styles.boldText}>Genre</ThemedText>
-      <ThemedText style={styles.text}>{genres.join(" • ")}</ThemedText>
+      <ThemedText style={styles.text}>
+        {genres.length > 0 ? genres.join(" • ") : "No information provided."}
+      </ThemedText>
       <ThemedText style={styles.boldText}>Synopsis</ThemedText>
-      <ThemedText style={styles.text}>{synopsis}</ThemedText>
+      <ThemedText style={styles.text}>
+        {synopsis ?? "No information provided."}
+      </ThemedText>
     </View>
   );
 }

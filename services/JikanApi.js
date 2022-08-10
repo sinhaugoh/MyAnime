@@ -13,16 +13,22 @@ export const JikanApi = {
     );
     return await response.json();
   },
-  fetchAnimeCharacters: async (mal_id) => {
+  fetchAnimeCharacters: async (mal_id, abortController) => {
     const response = await fetch(
-      `https://api.jikan.moe/v4/anime/${mal_id}/characters`
+      `https://api.jikan.moe/v4/anime/${mal_id}/characters`,
+      abortController?.signal
     );
     return await response.json();
   },
-  fetchRecommendedAnime: async (mal_id) => {
+  fetchRecommendedAnime: async (mal_id, abortController) => {
     const response = await fetch(
-      `https://api.jikan.moe/v4/anime/${mal_id}/recommendations`
+      `https://api.jikan.moe/v4/anime/${mal_id}/recommendations`,
+      abortController?.signal
     );
+    return await response.json();
+  },
+  fetchRandomAnime: async () => {
+    const response = await fetch("https://api.jikan.moe/v4/random/anime");
     return await response.json();
   },
 };

@@ -1,9 +1,82 @@
-import { View, Text, StyleSheet, SafeAreaView } from "react-native";
+import LoadingIndicator from "../../components/shared/LoadingIndicator";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Button,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
 import ThemedView from "../../components/shared/ThemedView";
+import AnimeDetail from "../../components/shared/AnimeDetail";
+import { useState, useEffect } from "react";
+import ThemedText from "../../components/shared/ThemedText";
+import { JikanApi } from "../../services/JikanApi";
+import TopSection from "../../components/AnimeDetail/TopSection";
+import MiddleSection from "../../components/AnimeDetail/MiddleSection";
+
 export default function RandomScreen() {
+  const [isLoading, setIsLoading] = useState(true);
+  const [animeData, setAnimeData] = useState(null);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const data = await JikanApi.fetchRandomAnime();
+        setAnimeData(data.data);
+      } catch (e) {
+        console.log(e);
+        setError(e);
+      } finally {
+        setIsLoading(false);
+      }
+    })();
+  }, []);
+
+  async function handleRefreshButton() {
+    try {
+      setIsLoading(true);
+      const data = await JikanApi.fetchRandomAnime();
+      setAnimeData(data.data);
+    } catch (e) {
+      console.log(e);
+      setError(e);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  if (error) return <ThemedText>{error}</ThemedText>;
+
   return (
     <ThemedView style={styles.container}>
-      <Text>Random</Text>
+      {isLoading ? (
+        <LoadingIndicator />
+      ) : (
+        <ScrollView style={styles.scrollView}>
+          <TopSection
+            image_url={animeData.images.jpg.image_url}
+            type={animeData.type}
+            episodes={animeData.episodes}
+            year={animeData.year}
+            studios={animeData.studios}
+            ageRating={animeData.rating}
+            rank={animeData.rank}
+            rating={animeData.score}
+          />
+          <MiddleSection
+            title={animeData.title}
+            japaneseTitle={animeData.title_japanese}
+            genres={animeData.genres.map((genre) => genre.name)}
+            synopsis={animeData.synopsis}
+          />
+          <View style={styles.spacer}></View>
+        </ScrollView>
+      )}
+      <TouchableOpacity onPress={handleRefreshButton} style={styles.button}>
+        <Text style={styles.buttonText}>Randomise</Text>
+      </TouchableOpacity>
     </ThemedView>
   );
 }
@@ -11,5 +84,25 @@ export default function RandomScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    position: "relative",
+  },
+  scrollView: {
+    paddingTop: 15,
+    paddingHorizontal: 15,
+  },
+  spacer: {
+    height: 80,
+  },
+  button: {
+    borderRadius: "100%",
+    backgroundColor: "white",
+    alignSelf: "center",
+    width: "50%",
+    padding: "5%",
+    position: "absolute",
+    bottom: 10,
+  },
+  buttonText: {
+    textAlign: "center",
   },
 });
