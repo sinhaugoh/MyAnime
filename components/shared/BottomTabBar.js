@@ -14,15 +14,23 @@ export default function BottomTabBar() {
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={{
-          headerShown: false,
           tabBarStyle: {
             borderTopColor: theme.bottomTabBarColor,
             backgroundColor: theme.bottomTabBarColor,
           },
           tabBarActiveTintColor: theme.primaryTextColor,
+          headerStyle: {
+            backgroundColor: theme.primaryBackgroundColor,
+            shadowOpacity: 0,
+          },
+          headerTintColor: theme.primaryTextColor,
         }}
       >
-        <Tab.Screen name="Discover" component={DiscoverNavigator} />
+        <Tab.Screen
+          name="Discover"
+          component={DiscoverNavigator}
+          options={{ headerShown: false }}
+        />
         <Tab.Screen name="Random" component={RandomScreen} />
         <Tab.Screen name="Book rack" component={BookRackScreen} />
         <Tab.Screen name="Settings" component={SettingsScreen} />
