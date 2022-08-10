@@ -23,8 +23,7 @@ export default function RandomScreen() {
   useEffect(() => {
     (async () => {
       try {
-        const data = await JikanApi.fetchRandomAnime();
-        setAnimeData(data.data);
+        await fetchRandomAnime();
       } catch (e) {
         console.log(e);
         setError(e);
@@ -34,11 +33,27 @@ export default function RandomScreen() {
     })();
   }, []);
 
+  async function fetchRandomAnime() {
+    let shouldFetch = true;
+    let data;
+
+    while (shouldFetch) {
+      data = await JikanApi.fetchRandomAnime();
+      const ageRating = data.data.rating;
+      console.log(ageRating);
+
+      // refetch random anime if it is pg 18+
+      if (ageRating !== "R+ - Mild Nudity" && ageRating !== "Rx - Hentai") {
+        setAnimeData(data.data);
+        shouldFetch = false;
+      }
+    }
+  }
+
   async function handleRefreshButton() {
     try {
       setIsLoading(true);
-      const data = await JikanApi.fetchRandomAnime();
-      setAnimeData(data.data);
+      await fetchRandomAnime();
     } catch (e) {
       console.log(e);
       setError(e);
