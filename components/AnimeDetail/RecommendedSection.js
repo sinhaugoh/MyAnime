@@ -6,16 +6,16 @@ import { JikanApi } from "../../services/JikanApi";
 import { RFPercentage } from "react-native-responsive-fontsize";
 import LoadingIndicator from "../shared/LoadingIndicator";
 
-export default function CharactersSection({ mal_id }) {
+export default function RecommendedSection({ mal_id }) {
   const [isLoading, setIsLoading] = useState(true);
-  const [charactersData, setCharactersData] = useState(null);
+  const [recommendationsData, setRecommendationsData] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     (async () => {
       try {
-        const data = await JikanApi.fetchAnimeCharacters(mal_id);
-        setCharactersData(data.data);
+        const data = await JikanApi.fetchRecommendedAnime(mal_id);
+        setRecommendationsData(data.data);
       } catch (e) {
         console.log(e);
         setError(e);
@@ -32,18 +32,17 @@ export default function CharactersSection({ mal_id }) {
 
   return (
     <>
-      <ThemedText style={styles.title}>Characters</ThemedText>
+      <ThemedText style={styles.title}>Recommended</ThemedText>
       <FlatList
-        data={charactersData}
+        data={recommendationsData}
         renderItem={({ item }) => (
           <MemoizedCardTile
-            image_url={item.character.images.jpg.image_url}
-            title={item.character.name}
+            image_url={item.entry.images.jpg.image_url}
+            title={item.entry.title}
           />
         )}
         horizontal={true}
         showsHorizontalScrollIndicator={false}
-        style={styles.flatList}
       />
     </>
   );
@@ -54,8 +53,5 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     fontSize: RFPercentage(2),
     marginBottom: 4,
-  },
-  flatList: {
-    marginBottom: 8,
   },
 });

@@ -19,4 +19,10 @@ export const JikanApi = {
     );
     return await response.json();
   },
+  fetchRecommendedAnime: async (mal_id) => {
+    const response = await fetch(
+      `https://api.jikan.moe/v4/anime/${mal_id}/recommendations`
+    );
+    return await response.json();
+  },
 };
