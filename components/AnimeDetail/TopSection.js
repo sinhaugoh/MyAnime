@@ -2,10 +2,16 @@ import { View, StyleSheet, Image } from "react-native";
 import ThemedText from "../../components/shared/ThemedText";
 import { RFPercentage } from "react-native-responsive-fontsize";
 
-export default function TopSection({ route }) {
-  const { image_url, type, episodes, year, studios, ageRating, rank, rating } =
-    route.params;
-
+export default function TopSection({
+  image_url,
+  type,
+  episodes,
+  year,
+  studios,
+  ageRating,
+  rank,
+  rating,
+}) {
   return (
     <View style={styles.row}>
       <View style={styles.left}>

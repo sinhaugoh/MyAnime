@@ -2,9 +2,12 @@ import { View, StyleSheet } from "react-native";
 import ThemedText from "../shared/ThemedText";
 import { RFPercentage } from "react-native-responsive-fontsize";
 
-export default function MiddleSection({ route }) {
-  const { title, japaneseTitle, genres, synopsis } = route.params;
-
+export default function MiddleSection({
+  title,
+  japaneseTitle,
+  genres,
+  synopsis,
+}) {
   return (
     <View>
       <ThemedText style={styles.header}>{title}</ThemedText>
