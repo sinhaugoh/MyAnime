@@ -1,7 +1,7 @@
 import { useContext, createContext, useState, useEffect, useRef } from "react";
 import useAsyncStorage from "../hooks/useAsyncStorage";
 import LoadingIndicator from "../components/shared/LoadingIndicator";
-import { favouriteAnimesKey } from "../const";
+import { favouriteAnimesKey, categories } from "../const";
 
 const FavouriteAnimesContext = createContext({});
 
@@ -23,7 +23,12 @@ export function FavouriteAnimesProvider({ children }) {
       // append the anime to favouriteAnimes
       setFavouriteAnimes([
         ...favouriteAnimes,
-        { mal_id: mal_id, title: title, image_url: image_url },
+        {
+          mal_id: mal_id,
+          title: title,
+          image_url: image_url,
+          category: categories[1],
+        },
       ]);
     }
   }

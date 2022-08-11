@@ -69,10 +69,6 @@ export default function TopSection({
   );
 }
 
-function Spacer() {
-  return <View style={{ width: 40 }}></View>;
-}
-
 const styles = StyleSheet.create({
   row: {
     flexDirection: "row",
