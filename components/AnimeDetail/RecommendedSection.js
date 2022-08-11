@@ -47,7 +47,7 @@ export default function RecommendedSection({ mal_id }) {
           showsHorizontalScrollIndicator={false}
         />
       ) : (
-        <ThemedText>No information provided.</ThemedText>
+        <ThemedText style={styles.text}>No information provided.</ThemedText>
       )}
     </>
   );
@@ -57,6 +57,8 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: "700",
     fontSize: RFPercentage(2),
-    marginBottom: 4,
+  },
+  text: {
+    fontSize: RFPercentage(2),
   },
 });

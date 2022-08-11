@@ -48,7 +48,7 @@ export default function CharactersSection({ mal_id }) {
           style={styles.flatList}
         />
       ) : (
-        <ThemedText>No information provided.</ThemedText>
+        <ThemedText style={styles.text}>No information provided.</ThemedText>
       )}
     </>
   );
@@ -58,9 +58,11 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: "700",
     fontSize: RFPercentage(2),
-    marginBottom: 4,
   },
   flatList: {
     marginBottom: 8,
+  },
+  text: {
+    fontSize: RFPercentage(2),
   },
 });

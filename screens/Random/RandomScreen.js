@@ -1,21 +1,10 @@
 import LoadingIndicator from "../../components/shared/LoadingIndicator";
-import {
-  View,
-  Text,
-  StyleSheet,
-  Button,
-  ScrollView,
-  TouchableOpacity,
-} from "react-native";
+import { Text, StyleSheet, TouchableOpacity } from "react-native";
 import ThemedView from "../../components/shared/ThemedView";
 import AnimeDetail from "../../components/shared/AnimeDetail";
 import { useState, useEffect } from "react";
 import ThemedText from "../../components/shared/ThemedText";
 import { JikanApi } from "../../services/JikanApi";
-import TopSection from "../../components/AnimeDetail/TopSection";
-import MiddleSection from "../../components/AnimeDetail/MiddleSection";
-import CharactersSection from "../../components/AnimeDetail/CharactersSection";
-import RecommendedSection from "../../components/AnimeDetail/RecommendedSection";
 
 export default function RandomScreen() {
   const [isLoading, setIsLoading] = useState(true);
@@ -70,27 +59,21 @@ export default function RandomScreen() {
       {isLoading ? (
         <LoadingIndicator />
       ) : (
-        <ScrollView style={styles.scrollView}>
-          <TopSection
-            image_url={animeData.images.jpg.image_url}
-            type={animeData.type}
-            episodes={animeData.episodes}
-            year={animeData.year}
-            studios={animeData.studios}
-            ageRating={animeData.rating}
-            rank={animeData.rank}
-            rating={animeData.score}
-          />
-          <MiddleSection
-            title={animeData.title}
-            japaneseTitle={animeData.title_japanese}
-            genres={animeData.genres.map((genre) => genre.name)}
-            synopsis={animeData.synopsis}
-          />
-          <CharactersSection mal_id={animeData.mal_id} />
-          <RecommendedSection mal_id={animeData.mal_id} />
-          <View style={styles.spacer}></View>
-        </ScrollView>
+        <AnimeDetail
+          mal_id={animeData.mal_id}
+          title={animeData.title}
+          japaneseTitle={animeData.title_japanese}
+          genres={animeData.genres.map((genre) => genre.name)}
+          synopsis={animeData.synopsis}
+          image_url={animeData.images.jpg.image_url}
+          type={animeData.type}
+          episodes={animeData.episodes}
+          year={animeData.year}
+          studios={animeData.studios}
+          ageRating={animeData.rating}
+          rank={animeData.rank}
+          rating={animeData.score}
+        />
       )}
       <TouchableOpacity onPress={handleRefreshButton} style={styles.button}>
         <Text style={styles.buttonText}>Randomise</Text>
