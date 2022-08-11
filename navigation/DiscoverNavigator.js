@@ -2,6 +2,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 import DiscoverScreen from "../screens/Discover/DiscoverScreen";
 import AnimeDetailScreen from "../screens/AnimeDetail/AnimeDetailScreen";
 import { useTheme } from "../contexts/ThemeContext";
+import { StyleSheet } from "react-native";
+import { useState } from "react";
 
 const Stack = createStackNavigator();
 
@@ -30,7 +32,9 @@ export default function DiscoverNavigator() {
       <Stack.Screen
         name="Anime detail"
         component={AnimeDetailScreen}
-        options={{ title: "Detail" }}
+        options={{
+          title: "Detail",
+        }}
       />
     </Stack.Navigator>
   );
