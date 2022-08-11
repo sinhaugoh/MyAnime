@@ -40,7 +40,7 @@ export default function AnimeDetailScreen({ route, navigation }) {
               backgroundColor="transparent"
               underlayColor="transparent"
               activeOpacity={1}
-              onPress={() => toggleFavouriteAnime(mal_id)}
+              onPress={() => toggleFavouriteAnime(mal_id, title, image_url)}
             />
           ) : (
             <MaterialIcons.Button
@@ -50,7 +50,7 @@ export default function AnimeDetailScreen({ route, navigation }) {
               backgroundColor="transparent"
               underlayColor="transparent"
               activeOpacity={1}
-              onPress={() => toggleFavouriteAnime(mal_id)}
+              onPress={() => toggleFavouriteAnime(mal_id, title, image_url)}
             />
           ),
       },

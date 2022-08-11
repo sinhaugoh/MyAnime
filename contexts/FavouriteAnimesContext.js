@@ -1,6 +1,7 @@
 import { useContext, createContext, useState, useEffect, useRef } from "react";
 import useAsyncStorage from "../hooks/useAsyncStorage";
 import LoadingIndicator from "../components/shared/LoadingIndicator";
+import { favouriteAnimesKey } from "../const";
 
 const FavouriteAnimesContext = createContext({});
 
@@ -10,9 +11,9 @@ export function useFavouriteAnimes() {
 
 export function FavouriteAnimesProvider({ children }) {
   const [favouriteAnimes, setFavouriteAnimes, hasRetrievedFavouriteAnimes] =
-    useAsyncStorage("@favouriteAnimes", useRef([]).current);
+    useAsyncStorage(favouriteAnimesKey, useRef([]).current);
 
-  function toggleFavouriteAnime(mal_id) {
+  function toggleFavouriteAnime(mal_id, title, image_url) {
     if (favouriteAnimes.find((anime) => anime.mal_id === mal_id)) {
       // filter out the current anime from favouriteAnimes
       setFavouriteAnimes(
@@ -20,12 +21,17 @@ export function FavouriteAnimesProvider({ children }) {
       );
     } else {
       // append the anime to favouriteAnimes
-      setFavouriteAnimes([...favouriteAnimes, { mal_id: mal_id }]);
+      setFavouriteAnimes([
+        ...favouriteAnimes,
+        { mal_id: mal_id, title: title, image_url: image_url },
+      ]);
     }
   }
 
   const isFavouriteAnime = (mal_id) =>
     favouriteAnimes.find((anime) => anime.mal_id === mal_id) ? true : false;
+
+  console.log(favouriteAnimes);
 
   return (
     <FavouriteAnimesContext.Provider
