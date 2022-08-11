@@ -64,5 +64,6 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: RFPercentage(2),
+    marginBottom: 8,
   },
 });
