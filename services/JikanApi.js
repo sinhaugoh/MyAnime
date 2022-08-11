@@ -1,3 +1,4 @@
+import { fetchWithTimeout } from "../utils";
 const _PAGE_LIMIT = 24;
 
 export const JikanApi = {
@@ -13,17 +14,16 @@ export const JikanApi = {
     );
     return await response.json();
   },
-  fetchAnimeCharacters: async (mal_id, abortController) => {
-    const response = await fetch(
-      `https://api.jikan.moe/v4/anime/${mal_id}/characters`,
-      abortController?.signal
+  fetchAnimeCharacters: async (mal_id) => {
+    const response = await fetchWithTimeout(
+      `https://api.jikan.moe/v4/anime/${mal_id}/characters`
     );
+
     return await response.json();
   },
-  fetchRecommendedAnime: async (mal_id, abortController) => {
-    const response = await fetch(
-      `https://api.jikan.moe/v4/anime/${mal_id}/recommendations`,
-      abortController?.signal
+  fetchRecommendedAnime: async (mal_id) => {
+    const response = await fetchWithTimeout(
+      `https://api.jikan.moe/v4/anime/${mal_id}/recommendations`
     );
     return await response.json();
   },

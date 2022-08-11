@@ -14,6 +14,8 @@ import ThemedText from "../../components/shared/ThemedText";
 import { JikanApi } from "../../services/JikanApi";
 import TopSection from "../../components/AnimeDetail/TopSection";
 import MiddleSection from "../../components/AnimeDetail/MiddleSection";
+import CharactersSection from "../../components/AnimeDetail/CharactersSection";
+import RecommendedSection from "../../components/AnimeDetail/RecommendedSection";
 
 export default function RandomScreen() {
   const [isLoading, setIsLoading] = useState(true);
@@ -40,7 +42,6 @@ export default function RandomScreen() {
     while (shouldFetch) {
       data = await JikanApi.fetchRandomAnime();
       const ageRating = data.data.rating;
-      console.log(ageRating);
 
       // refetch random anime if it is pg 18+
       if (ageRating !== "R+ - Mild Nudity" && ageRating !== "Rx - Hentai") {
@@ -86,6 +87,8 @@ export default function RandomScreen() {
             genres={animeData.genres.map((genre) => genre.name)}
             synopsis={animeData.synopsis}
           />
+          <CharactersSection mal_id={animeData.mal_id} />
+          <RecommendedSection mal_id={animeData.mal_id} />
           <View style={styles.spacer}></View>
         </ScrollView>
       )}

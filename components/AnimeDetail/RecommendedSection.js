@@ -12,31 +12,29 @@ export default function RecommendedSection({ mal_id }) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    let controller = new AbortController();
+    let is_mounted = true;
     (async () => {
       try {
-        const data = await JikanApi.fetchRecommendedAnime(mal_id, controller);
-        setRecommendationsData(data.data);
+        const data = await JikanApi.fetchRecommendedAnime(mal_id);
+        if (is_mounted) setRecommendationsData(data.data);
       } catch (e) {
-        console.log(e);
-        setError(e);
+        if (is_mounted) setError(e);
       } finally {
-        setIsLoading(false);
+        if (is_mounted) setIsLoading(false);
       }
     })();
 
-    return () => controller.abort();
+    return () => {
+      is_mounted = false;
+    };
   }, []);
-
-  if (isLoading) return <LoadingIndicator />;
-
-  // TODO: implement error page
-  if (error) return <ThemedText />;
 
   return (
     <>
       <ThemedText style={styles.title}>Recommended</ThemedText>
-      {recommendationsData.length > 0 ? (
+      {isLoading ? (
+        <LoadingIndicator />
+      ) : recommendationsData?.length > 0 ? (
         <FlatList
           data={recommendationsData}
           renderItem={({ item }) => (

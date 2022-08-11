@@ -12,31 +12,29 @@ export default function CharactersSection({ mal_id }) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    let controller = new AbortController();
+    let is_mounted = true;
     (async () => {
       try {
-        const data = await JikanApi.fetchAnimeCharacters(mal_id, controller);
-        setCharactersData(data.data);
+        const data = await JikanApi.fetchAnimeCharacters(mal_id);
+        if (is_mounted) setCharactersData(data.data);
       } catch (e) {
-        console.log(e);
-        setError(e);
+        if (is_mounted) setError(e);
       } finally {
-        setIsLoading(false);
+        if (is_mounted) setIsLoading(false);
       }
     })();
 
-    return () => controller.abort();
+    return () => {
+      is_mounted = false;
+    };
   }, []);
-
-  if (isLoading) return <LoadingIndicator />;
-
-  // TODO: implement error page
-  if (error) return <ThemedText />;
 
   return (
     <>
       <ThemedText style={styles.title}>Characters</ThemedText>
-      {charactersData?.length > 0 ? (
+      {isLoading ? (
+        <LoadingIndicator />
+      ) : charactersData?.length > 0 ? (
         <FlatList
           data={charactersData}
           renderItem={({ item }) => (
