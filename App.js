@@ -2,11 +2,14 @@ import { StatusBar } from "react-native";
 import { StyleSheet, Text, View } from "react-native";
 import BottomTabBar from "./components/shared/BottomTabBar";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import { FavouriteAnimesProvider } from "./contexts/FavouriteAnimesContext";
 export default function App() {
   return (
     <ThemeProvider>
-      <BottomTabBar />
-      <StatusBar />
+      <FavouriteAnimesProvider>
+        <BottomTabBar />
+        <StatusBar />
+      </FavouriteAnimesProvider>
     </ThemeProvider>
   );
 }

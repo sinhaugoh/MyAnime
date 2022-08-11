@@ -5,11 +5,12 @@ import AnimeDetail from "../../components/shared/AnimeDetail";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useTheme } from "../../contexts/ThemeContext";
 import useAsyncStorage from "../../hooks/useAsyncStorage";
+import { useFavouriteAnimes } from "../../contexts/FavouriteAnimesContext";
 
 export default function AnimeDetailScreen({ route, navigation }) {
   const { theme } = useTheme();
-  const [favouriteAnimes, setFavouriteAnimes, hasRetrievedFavouriteAnimes] =
-    useAsyncStorage("@favouriteAnimes", useRef([]).current);
+  const { favouriteAnimes, toggleFavouriteAnime, isFavouriteAnime } =
+    useFavouriteAnimes();
   const {
     mal_id,
     title,
@@ -25,42 +26,13 @@ export default function AnimeDetailScreen({ route, navigation }) {
     rank,
     rating,
   } = route.params;
-  const [isFavourite, setIsFavourite] = useState(false);
-
-  useEffect(() => console.log("rendered"));
-
-  function handleFavouriteButtonOnPress() {
-    if (isFavourite) {
-      // filter out the current anime from favouriteAnimes
-      setFavouriteAnimes(
-        favouriteAnimes.filter((anime) => anime.mal_id != mal_id)
-      );
-      setIsFavourite(false);
-    } else {
-      // append the anime to favouriteAnimes
-      setFavouriteAnimes([...favouriteAnimes, { mal_id: mal_id }]);
-      setIsFavourite(true);
-    }
-  }
-
-  useEffect(() => {
-    // check whether the anime is the user's favourite when retrieved favouriteAnimes
-    if (hasRetrievedFavouriteAnimes) {
-      for (const favouriteAnime of favouriteAnimes) {
-        if (favouriteAnime.mal_id === mal_id) {
-          setIsFavourite(true);
-          return;
-        }
-      }
-    }
-  }, [hasRetrievedFavouriteAnimes]);
 
   useLayoutEffect(() => {
     // favourite button
     navigation.setOptions(
       {
         headerRight: () =>
-          isFavourite ? (
+          isFavouriteAnime(mal_id) ? (
             <MaterialIcons.Button
               name="favorite"
               size={24}
@@ -68,7 +40,7 @@ export default function AnimeDetailScreen({ route, navigation }) {
               backgroundColor="transparent"
               underlayColor="transparent"
               activeOpacity={1}
-              onPress={handleFavouriteButtonOnPress}
+              onPress={() => toggleFavouriteAnime(mal_id)}
             />
           ) : (
             <MaterialIcons.Button
@@ -78,7 +50,7 @@ export default function AnimeDetailScreen({ route, navigation }) {
               backgroundColor="transparent"
               underlayColor="transparent"
               activeOpacity={1}
-              onPress={handleFavouriteButtonOnPress}
+              onPress={() => toggleFavouriteAnime(mal_id)}
             />
           ),
       },
