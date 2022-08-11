@@ -23,28 +23,26 @@ export default function TopSection({
             <ThemedText style={[styles.bold, styles.text]}>Type</ThemedText>
             <ThemedText style={styles.text}>{type ?? "-"}</ThemedText>
           </View>
-          <Spacer />
           <View style={styles.col}>
             <ThemedText style={[styles.bold, styles.text]}>Episodes</ThemedText>
             <ThemedText style={styles.text}>{episodes ?? "-"}</ThemedText>
           </View>
         </View>
-        <View style={styles.row}>
+        <View style={[styles.row]}>
           <View style={styles.col}>
             <ThemedText style={[styles.bold, styles.text]}>Year</ThemedText>
             <ThemedText style={styles.text}>{year ?? "-"}</ThemedText>
           </View>
-          <Spacer />
-          <View style={styles.col}>
-            <ThemedText style={[styles.bold, styles.text]}>Episodes</ThemedText>
-            <ThemedText style={styles.text}>
+          <View style={[styles.col]}>
+            <ThemedText style={[styles.bold, styles.text]}>Studio</ThemedText>
+            <ThemedText numberOfLines={1} style={[styles.text]}>
               {studios?.[0]?.name ?? "-"}
             </ThemedText>
           </View>
         </View>
         <View style={styles.row}>
           <View style={styles.col}>
-            <ThemedText style={[styles.bold, styles.text]}>
+            <ThemedText numberOfLines={1} style={[styles.bold, styles.text]}>
               Age rating
             </ThemedText>
             <ThemedText style={styles.text}>{ageRating ?? "-"}</ThemedText>
@@ -82,6 +80,7 @@ const styles = StyleSheet.create({
   },
   col: {
     flexDirection: "column",
+    flex: 1,
   },
   justifyBetween: {
     justifyContent: "space-between",
