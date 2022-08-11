@@ -1,15 +1,21 @@
 import LoadingIndicator from "../../components/shared/LoadingIndicator";
 import { Text, StyleSheet, TouchableOpacity } from "react-native";
+import { MaterialIcons } from "@expo/vector-icons";
 import ThemedView from "../../components/shared/ThemedView";
 import AnimeDetail from "../../components/shared/AnimeDetail";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
 import ThemedText from "../../components/shared/ThemedText";
 import { JikanApi } from "../../services/JikanApi";
+import { useFavouriteAnimes } from "../../contexts/FavouriteAnimesContext";
+import { useTheme } from "../../contexts/ThemeContext";
 
-export default function RandomScreen() {
+export default function RandomScreen({ navigation }) {
   const [isLoading, setIsLoading] = useState(true);
   const [animeData, setAnimeData] = useState(null);
   const [error, setError] = useState(null);
+  const { theme } = useTheme();
+  const { favouriteAnimes, toggleFavouriteAnime, isFavouriteAnime } =
+    useFavouriteAnimes();
 
   useEffect(() => {
     (async () => {
@@ -42,6 +48,7 @@ export default function RandomScreen() {
 
   async function handleRefreshButton() {
     try {
+      setAnimeData(null);
       setIsLoading(true);
       await fetchRandomAnime();
     } catch (e) {
@@ -51,6 +58,60 @@ export default function RandomScreen() {
       setIsLoading(false);
     }
   }
+
+  useLayoutEffect(() => {
+    // favourite button
+    navigation.setOptions(
+      {
+        headerRight: () =>
+          animeData ? (
+            isFavouriteAnime(animeData.mal_id) ? (
+              <MaterialIcons.Button
+                name="favorite"
+                size={24}
+                color={theme.primaryTextColor}
+                backgroundColor="transparent"
+                underlayColor="transparent"
+                activeOpacity={1}
+                onPress={() =>
+                  toggleFavouriteAnime(
+                    animeData.mal_id,
+                    animeData.title,
+                    animeData.image_url
+                  )
+                }
+              />
+            ) : (
+              <MaterialIcons.Button
+                name="favorite-outline"
+                size={24}
+                color={theme.primaryTextColor}
+                backgroundColor="transparent"
+                underlayColor="transparent"
+                activeOpacity={1}
+                onPress={() =>
+                  toggleFavouriteAnime(
+                    animeData.mal_id,
+                    animeData.title,
+                    animeData.image_url
+                  )
+                }
+              />
+            )
+          ) : (
+            <MaterialIcons.Button
+              name="favorite-outline"
+              size={24}
+              color={theme.primaryTextColor}
+              backgroundColor="transparent"
+              underlayColor="transparent"
+              activeOpacity={1}
+            />
+          ),
+      },
+      [navigation]
+    );
+  });
 
   if (error) return <ThemedText>{error}</ThemedText>;
 
