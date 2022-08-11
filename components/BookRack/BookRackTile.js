@@ -2,6 +2,8 @@ import ThemedView from "../shared/ThemedView";
 import ThemedText from "../shared/ThemedText";
 import { Image, StyleSheet, View } from "react-native";
 import { RFPercentage } from "react-native-responsive-fontsize";
+import { FontAwesome5 } from "@expo/vector-icons";
+import { useTheme } from "../../contexts/ThemeContext";
 
 export default function BookRackTile({
   title,
@@ -11,6 +13,7 @@ export default function BookRackTile({
   myRating,
   note,
 }) {
+  const { theme } = useTheme();
   return (
     <ThemedView style={[style, styles.container]}>
       <Image source={{ uri: image_url }} style={styles.image} />
@@ -37,8 +40,27 @@ export default function BookRackTile({
           <ThemedText style={styles.text}>{note ?? "-"}</ThemedText>
         </View>
       </View>
-      <View style={styles.end}>
-        <ThemedText>heee</ThemedText>
+      <View>
+        <FontAwesome5.Button
+          name="edit"
+          size={20}
+          color={theme.primaryTextColor}
+          style={styles.iconButton}
+          backgroundColor="transparent"
+          underlayColor="transparent"
+          activeOpacity={1}
+          onPress={() => console.log("hoho")}
+        />
+        <FontAwesome5.Button
+          name="trash-alt"
+          size={20}
+          color={theme.primaryTextColor}
+          style={styles.iconButton}
+          backgroundColor="transparent"
+          underlayColor="transparent"
+          activeOpacity={1}
+          onPress={() => console.log("hoho")}
+        />
       </View>
     </ThemedView>
   );
@@ -82,4 +104,8 @@ const styles = StyleSheet.create({
     fontSize: RFPercentage(2),
   },
   note: {},
+  iconButton: {
+    marginBottom: 15,
+    padding: 0,
+  },
 });
