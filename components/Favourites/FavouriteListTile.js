@@ -6,12 +6,14 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import { useTheme } from "../../contexts/ThemeContext";
 
 export default function FavouriteListTile({
+  mal_id,
   title,
   image_url,
   style,
   progress,
   myRating,
   note,
+  editButtonPressedCallback,
 }) {
   const { theme } = useTheme();
   return (
@@ -49,7 +51,7 @@ export default function FavouriteListTile({
           backgroundColor="transparent"
           underlayColor="transparent"
           activeOpacity={1}
-          onPress={() => console.log("hoho")}
+          onPress={() => editButtonPressedCallback(mal_id)}
         />
         <FontAwesome5.Button
           name="trash-alt"

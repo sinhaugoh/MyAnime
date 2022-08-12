@@ -4,6 +4,7 @@ import { useFavouriteAnimes } from "../../contexts/FavouriteAnimesContext";
 import FavouriteListTile from "../../components/Favourites/FavouriteListTile";
 import { categories } from "../../const";
 import ThemedText from "../../components/shared/ThemedText";
+import ProgressFormModal from "../../components/Favourites/ProgressFormModal";
 import { useTheme } from "../../contexts/ThemeContext";
 
 import { useRef, useState, useEffect } from "react";
@@ -13,23 +14,23 @@ export default function FavouritesScreen() {
   const { favouriteAnimes } = useFavouriteAnimes();
   const { theme } = useTheme();
   const themedStyles = styles(theme);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [modalMalId, setModalMalId] = useState(null);
 
   const [categorisedFavouriteAnimes, setCategorisedFavouriteAnimes] =
     useState(null);
 
+  function editButtonPressedCallback(mal_id) {
+    setModalMalId(mal_id);
+    setIsModalVisible(true);
+  }
+
+  function closeModalCallback() {
+    setIsModalVisible(false);
+  }
+
   // categories favourite animes
   useEffect(() => {
-    // let categorisedFavAnime = {};
-    // for (const favouriteAnime of favouriteAnimes) {
-    //   if (categorisedFavAnime[favouriteAnime.category]) {
-    //     // if category exist
-    //     categorisedFavAnime[favouriteAnime.category].push(favouriteAnime);
-    //   } else {
-    //     // if category does not exist yet
-    //     categorisedFavAnime[favouriteAnime.category] = [favouriteAnime];
-    //   }
-    // }
-
     let categorisedFavAnime = [];
     for (const favouriteAnime of favouriteAnimes) {
       const categoryIndex = categorisedFavAnime.findIndex(
@@ -53,30 +54,41 @@ export default function FavouritesScreen() {
 
     setCategorisedFavouriteAnimes(categorisedFavAnime);
   }, [favouriteAnimes]);
-  console.log("categorisedFavouriteAnimes", categorisedFavouriteAnimes);
 
   if (!categorisedFavouriteAnimes)
     return <ThemedText>You have not favourite any anime yet!</ThemedText>;
 
   return (
-    <ThemedView style={themedStyles.container}>
-      <SectionList
-        sections={categorisedFavouriteAnimes}
-        renderItem={({ item }) => (
-          <FavouriteListTile
-            key={item.mal_id}
-            title={item.title}
-            image_url={item.image_url}
-            style={themedStyles.tile}
-          />
-        )}
-        renderSectionHeader={({ section: { category } }) => (
-          <View style={themedStyles.header}>
-            <ThemedText style={themedStyles.headerText}>{category}</ThemedText>
-          </View>
-        )}
+    <>
+      <ThemedView style={themedStyles.container}>
+        <SectionList
+          sections={categorisedFavouriteAnimes}
+          renderItem={({ item }) => (
+            <FavouriteListTile
+              key={item.mal_id}
+              mal_id={item.mal_id}
+              title={item.title}
+              image_url={item.image_url}
+              style={themedStyles.tile}
+              editButtonPressedCallback={editButtonPressedCallback}
+            />
+          )}
+          renderSectionHeader={({ section: { category } }) => (
+            <View style={themedStyles.header}>
+              <ThemedText style={themedStyles.headerText}>
+                {category}
+              </ThemedText>
+            </View>
+          )}
+        />
+      </ThemedView>
+      <ProgressFormModal
+        visible={isModalVisible}
+        mal_id={modalMalId}
+        onRequestClose={() => setIsModalVisible(false)}
+        closeModalCallback={closeModalCallback}
       />
-    </ThemedView>
+    </>
   );
 }
 
