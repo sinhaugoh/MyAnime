@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
     height: 80,
   },
   button: {
-    borderRadius: "100%",
+    borderRadius: 99999,
     backgroundColor: "white",
     alignSelf: "center",
     width: "50%",
