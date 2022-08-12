@@ -10,8 +10,8 @@ export default function FavouriteListTile({
   title,
   image_url,
   style,
-  progress,
-  myRating,
+  episode,
+  rating,
   note,
   editButtonPressedCallback,
 }) {
@@ -27,19 +27,19 @@ export default function FavouriteListTile({
           <View style={styles.col}>
             <ThemedText style={styles.boldText}>Progress</ThemedText>
             <ThemedText style={styles.text}>
-              {progress ? `Episode ${progress}` : "-"}
+              {episode ? `Episode ${episode}` : "-"}
             </ThemedText>
           </View>
           <View style={styles.col}>
             <ThemedText style={styles.boldText}>My rating</ThemedText>
             <ThemedText style={styles.text}>
-              {myRating ? `${myRating} / 10` : "-"}
+              {rating ? `${rating} / 10` : "-"}
             </ThemedText>
           </View>
         </View>
         <View style={styles.note}>
           <ThemedText style={styles.boldText}>Note to myself</ThemedText>
-          <ThemedText style={styles.text}>{note ?? "-"}</ThemedText>
+          <ThemedText style={styles.text}>{note || "-"}</ThemedText>
         </View>
       </View>
       <View>

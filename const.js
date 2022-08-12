@@ -4,6 +4,7 @@ export const DarkTheme = {
   linkColor: "#6d68e8",
   bottomTabBarColor: "#2C333B",
   primaryTextColor: "#e3e3e3",
+  borderOutline: "#e3e3e3",
 };
 
 export const favouriteAnimesKey = "@favouriteAnimes";
@@ -15,3 +16,5 @@ export const categories = [
   "Completed",
   "Dropped",
 ];
+
+export const ratings = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];

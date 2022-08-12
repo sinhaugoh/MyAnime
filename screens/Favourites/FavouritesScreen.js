@@ -53,6 +53,7 @@ export default function FavouritesScreen() {
     }
 
     setCategorisedFavouriteAnimes(categorisedFavAnime);
+    console.log("categorisedFavAnime", categorisedFavAnime);
   }, [favouriteAnimes]);
 
   if (!categorisedFavouriteAnimes)
@@ -69,6 +70,9 @@ export default function FavouritesScreen() {
               mal_id={item.mal_id}
               title={item.title}
               image_url={item.image_url}
+              episode={item.episode}
+              rating={item.rating}
+              note={item.note}
               style={themedStyles.tile}
               editButtonPressedCallback={editButtonPressedCallback}
             />
