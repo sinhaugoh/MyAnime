@@ -5,7 +5,7 @@ import { RFPercentage } from "react-native-responsive-fontsize";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { useTheme } from "../../contexts/ThemeContext";
 
-export default function BookRackTile({
+export default function FavouriteListTile({
   title,
   image_url,
   style,

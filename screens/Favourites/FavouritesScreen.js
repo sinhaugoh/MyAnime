@@ -1,7 +1,7 @@
 import { View, StyleSheet, ScrollView, SectionList } from "react-native";
 import ThemedView from "../../components/shared/ThemedView";
 import { useFavouriteAnimes } from "../../contexts/FavouriteAnimesContext";
-import BookRackTile from "../../components/BookRack/BookRackTile";
+import FavouriteListTile from "../../components/Favourites/FavouriteListTile";
 import { categories } from "../../const";
 import ThemedText from "../../components/shared/ThemedText";
 import { useTheme } from "../../contexts/ThemeContext";
@@ -9,7 +9,7 @@ import { useTheme } from "../../contexts/ThemeContext";
 import { useRef, useState, useEffect } from "react";
 import { RFPercentage } from "react-native-responsive-fontsize";
 
-export default function BookRackScreen() {
+export default function FavouritesScreen() {
   const { favouriteAnimes } = useFavouriteAnimes();
   const { theme } = useTheme();
   const themedStyles = styles(theme);
@@ -63,7 +63,7 @@ export default function BookRackScreen() {
       <SectionList
         sections={categorisedFavouriteAnimes}
         renderItem={({ item }) => (
-          <BookRackTile
+          <FavouriteListTile
             key={item.mal_id}
             title={item.title}
             image_url={item.image_url}

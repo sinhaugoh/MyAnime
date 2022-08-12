@@ -1,7 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
 import DiscoverNavigator from "../../navigation/DiscoverNavigator";
 import RandomScreen from "../../screens/Random/RandomScreen";
-import BookRackScreen from "../../screens/BookRack/BookRackScreen";
+import FavouritesScreen from "../../screens/Favourites/FavouritesScreen";
 import SettingsScreen from "../../screens/Settings/SettingsScreen";
 import { useTheme } from "../../contexts/ThemeContext";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -50,13 +50,13 @@ export default function BottomTabBar() {
           }}
         />
         <Tab.Screen
-          name="Book rack"
-          component={BookRackScreen}
+          name="Favourites"
+          component={FavouritesScreen}
           options={{
             tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons
-                name="bookshelf"
-                size={size + 3}
+                name="cards-heart"
+                size={size}
                 color={color}
               />
             ),
