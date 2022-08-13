@@ -34,21 +34,6 @@ export function FavouriteAnimesProvider({ children }) {
   }
 
   function updateFavouriteAnime(mal_id, episode, rating, note, category) {
-    // const animeIndex = favouriteAnimes.findIndex(
-    //   (anime) => anime.mal_id === mal_id
-    // );
-
-    // if anime can be found from local storage
-    // if (animeIndex >= 0) {
-    //   let updatedFavouriteAnimes = [...favouriteAnimes];
-    //   updatedFavouriteAnimes[animeIndex] = {
-    //     ...updatedFavouriteAnimes[animeIndex],
-    //     episode: episode,
-    //     rating: rating,
-    //     note: note,
-    //     category: category,
-    //   };
-
     // update anime
     setFavouriteAnimes(
       favouriteAnimes.map((anime) => {
@@ -68,6 +53,13 @@ export function FavouriteAnimesProvider({ children }) {
     // }
   }
 
+  function removeFavouriteAnime(mal_id) {
+    // filter out the current anime from favouriteAnimes
+    setFavouriteAnimes(
+      favouriteAnimes.filter((anime) => anime.mal_id != mal_id)
+    );
+  }
+
   const isFavouriteAnime = (mal_id) =>
     favouriteAnimes.find((anime) => anime.mal_id === mal_id) ? true : false;
 
@@ -80,6 +72,7 @@ export function FavouriteAnimesProvider({ children }) {
         toggleFavouriteAnime,
         isFavouriteAnime,
         updateFavouriteAnime,
+        removeFavouriteAnime,
       }}
     >
       {hasRetrievedFavouriteAnimes ? children : <LoadingIndicator />}

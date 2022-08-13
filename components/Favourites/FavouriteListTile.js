@@ -4,6 +4,7 @@ import { Image, StyleSheet, View } from "react-native";
 import { RFPercentage } from "react-native-responsive-fontsize";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { useTheme } from "../../contexts/ThemeContext";
+import { useFavouriteAnimes } from "../../contexts/FavouriteAnimesContext";
 
 export default function FavouriteListTile({
   mal_id,
@@ -16,6 +17,7 @@ export default function FavouriteListTile({
   editButtonPressedCallback,
 }) {
   const { theme } = useTheme();
+  const { removeFavouriteAnime } = useFavouriteAnimes();
   return (
     <ThemedView style={[style, styles.container]}>
       <Image source={{ uri: image_url }} style={styles.image} />
@@ -61,7 +63,7 @@ export default function FavouriteListTile({
           backgroundColor="transparent"
           underlayColor="transparent"
           activeOpacity={1}
-          onPress={() => console.log("hoho")}
+          onPress={() => removeFavouriteAnime(mal_id)}
         />
       </View>
     </ThemedView>
