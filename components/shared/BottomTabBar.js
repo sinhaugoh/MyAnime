@@ -2,13 +2,13 @@ import { NavigationContainer } from "@react-navigation/native";
 import DiscoverNavigator from "../../navigation/DiscoverNavigator";
 import RandomScreen from "../../screens/Random/RandomScreen";
 import FavouritesScreen from "../../screens/Favourites/FavouritesScreen";
-import SettingsScreen from "../../screens/Settings/SettingsScreen";
 import { useTheme } from "../../contexts/ThemeContext";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Feather } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
+import SettingsNavigator from "../../navigation/SettingsNavigator";
 
 const Tab = createBottomTabNavigator();
 
@@ -64,8 +64,9 @@ export default function BottomTabBar() {
         />
         <Tab.Screen
           name="Settings"
-          component={SettingsScreen}
+          component={SettingsNavigator}
           options={{
+            headerShown: false,
             tabBarIcon: ({ color, size }) => (
               <Ionicons name="settings" size={size} color={color} />
             ),

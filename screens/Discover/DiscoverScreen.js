@@ -6,12 +6,22 @@ import TopRankedView from "../../components/Discover/TopRankedView";
 import LoadingIndicator from "../../components/shared/LoadingIndicator";
 import { Feather } from "@expo/vector-icons";
 import { useTheme } from "../../contexts/ThemeContext";
+import { useEffect } from "react";
+import { useSettings } from "../../contexts/SettingsContext";
 
 const Tab = createMaterialTopTabNavigator();
 
-export default function DiscoverScreen() {
+export default function DiscoverScreen({ navigation }) {
   const { theme } = useTheme();
+  const { genrePreferences } = useSettings();
   const themedStyles = styles(theme);
+
+  //navigate to genre settings screen if first time launch
+  useEffect(() => {
+    if (genrePreferences === undefined || genrePreferences === null) {
+      navigation.navigate("Settings");
+    }
+  }, []);
 
   return (
     <>
@@ -61,7 +71,7 @@ const styles = (theme) =>
       backgroundColor: theme.primaryBackgroundColor,
     },
     searchInput: {
-      backgroundColor: "#34373E",
+      backgroundColor: theme.formInputColor,
       color: theme.primaryTextColor,
       fontSize: 18,
       marginVertical: 5,

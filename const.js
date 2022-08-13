@@ -5,9 +5,11 @@ export const DarkTheme = {
   bottomTabBarColor: "#2C333B",
   primaryTextColor: "#e3e3e3",
   borderOutline: "#e3e3e3",
+  formInputColor: "#34373E",
 };
 
 export const favouriteAnimesKey = "@favouriteAnimes";
+export const genrePreferencesKey = "@genrePreferencesKey";
 
 export const categories = [
   "Newly added",
