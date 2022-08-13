@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import ThemedView from "../shared/ThemedView";
 import ThemedText from "../shared/ThemedText";
+import { AntDesign } from "@expo/vector-icons";
 import { useTheme } from "../../contexts/ThemeContext";
 import { RFPercentage } from "react-native-responsive-fontsize";
 import { useEffect, useRef, useState } from "react";
@@ -123,6 +124,10 @@ export default function ProgressFormModal(props) {
           <LoadingIndicator />
         ) : (
           <>
+            <ThemedText style={themedStyles.title}>
+              {animeData.title}
+            </ThemedText>
+            <ThemedText style={themedStyles.label}>Episode</ThemedText>
             <RNPickerSelect
               onValueChange={(value) =>
                 setFormState((prevState) => {
@@ -135,7 +140,22 @@ export default function ProgressFormModal(props) {
               placeholder={{}}
               items={episodeItems}
               value={formState.episodeValue}
+              Icon={() => (
+                <AntDesign
+                  name="caretdown"
+                  size={15}
+                  color={theme.primaryTextColor}
+                />
+              )}
+              style={{
+                ...pickerStyle(theme),
+                iconContainer: {
+                  top: 15,
+                  right: 10,
+                },
+              }}
             />
+            <ThemedText style={themedStyles.label}>My rating</ThemedText>
             <RNPickerSelect
               onValueChange={(value) =>
                 setFormState((prevState) => {
@@ -153,7 +173,22 @@ export default function ProgressFormModal(props) {
                 };
               })}
               value={formState.ratingValue}
+              Icon={() => (
+                <AntDesign
+                  name="caretdown"
+                  size={15}
+                  color={theme.primaryTextColor}
+                />
+              )}
+              style={{
+                ...pickerStyle(theme),
+                iconContainer: {
+                  top: 15,
+                  right: 10,
+                },
+              }}
             />
+            <ThemedText style={themedStyles.label}>Category</ThemedText>
             <RNPickerSelect
               onValueChange={(value) =>
                 setFormState((prevState) => {
@@ -168,7 +203,22 @@ export default function ProgressFormModal(props) {
                 return { label: category, value: category };
               })}
               value={formState.categoryValue}
+              Icon={() => (
+                <AntDesign
+                  name="caretdown"
+                  size={15}
+                  color={theme.primaryTextColor}
+                />
+              )}
+              style={{
+                ...pickerStyle(theme),
+                iconContainer: {
+                  top: 15,
+                  right: 10,
+                },
+              }}
             />
+            <ThemedText style={themedStyles.label}>Note</ThemedText>
             <TextInput
               onChangeText={(value) =>
                 setFormState((prevState) => {
@@ -179,6 +229,7 @@ export default function ProgressFormModal(props) {
                 })
               }
               value={formState.noteValue}
+              style={themedStyles.textInput}
             />
           </>
         )}
@@ -200,5 +251,41 @@ const styles = (theme) =>
     headerButtonText: {
       color: theme.linkColor,
       fontSize: RFPercentage(2),
+    },
+    title: {
+      textAlign: "center",
+      fontSize: RFPercentage(2),
+    },
+    label: {
+      marginBottom: 4,
+    },
+    textInput: {
+      color: theme.primaryTextColor,
+      borderColor: "gray",
+      borderWidth: 1,
+      paddingVertical: 12,
+      paddingHorizontal: 10,
+    },
+  });
+
+const pickerStyle = (theme) =>
+  StyleSheet.create({
+    inputIOS: {
+      fontSize: RFPercentage(2),
+      paddingVertical: 12,
+      paddingHorizontal: 10,
+      borderWidth: 1,
+      borderColor: "gray",
+      color: theme.primaryTextColor,
+      marginBottom: 8,
+    },
+    inputAndroid: {
+      fontSize: RFPercentage(2),
+      paddingHorizontal: 10,
+      paddingVertical: 8,
+      borderWidth: 0.5,
+      borderColor: "purple",
+      color: theme.primaryTextColor,
+      marginBottom: 8,
     },
   });
