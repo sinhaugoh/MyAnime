@@ -32,23 +32,25 @@ export default function FavouritesScreen() {
   // categories favourite animes
   useEffect(() => {
     let categorisedFavAnime = [];
+    // initialise categories
+    for (category of categories) {
+      categorisedFavAnime.push({
+        category: category,
+        data: [],
+      });
+    }
+
     for (const favouriteAnime of favouriteAnimes) {
       const categoryIndex = categorisedFavAnime.findIndex(
         (element) => element.category === favouriteAnime.category
       );
 
       if (categoryIndex >= 0) {
-        // found such category, append the current into data
+        // append the current anime
         categorisedFavAnime[categoryIndex] = {
           ...categorisedFavAnime[categoryIndex],
           data: [...categorisedFavAnime[categoryIndex].data, favouriteAnime],
         };
-      } else {
-        // does not found such category, create new category
-        categorisedFavAnime.push({
-          category: favouriteAnime.category,
-          data: [favouriteAnime],
-        });
       }
     }
 
