@@ -10,10 +10,21 @@ export function useSettings() {
 }
 
 export function SettingsProvider({ children }) {
-  const [genrePreferences, setGenrePreferences, hasRetrievedValue] =
-    useAsyncStorage(genrePreferencesKey);
+  const [
+    genreExcludesPreferences,
+    setGenreExcludesPreferences,
+    hasRetrievedValue,
+  ] = useAsyncStorage(genrePreferencesKey);
+
+  // function excludeGenre(genre) {
+  //   if (genreExcludesPreferences === undefined || genreExcludesPreferences === null) return;
+
+  // }
+
   return (
-    <SettingsContext.Provider value={{ genrePreferences, setGenrePreferences }}>
+    <SettingsContext.Provider
+      value={{ genreExcludesPreferences, setGenreExcludesPreferences }}
+    >
       {hasRetrievedValue ? children : <LoadingIndicator />}
     </SettingsContext.Provider>
   );

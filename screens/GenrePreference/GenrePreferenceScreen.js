@@ -1,26 +1,58 @@
 import ThemedView from "../../components/shared/ThemedView";
 import ThemedText from "../../components/shared/ThemedText";
 import DropDownPicker from "react-native-dropdown-picker";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { RFPercentage } from "react-native-responsive-fontsize";
 import { Platform, SafeAreaView, StyleSheet } from "react-native";
 import { useTheme } from "../../contexts/ThemeContext";
 import { useSettings } from "../../contexts/SettingsContext";
+import { JikanApi } from "../../services/JikanApi";
 
 export default function GenrePreferenceScreen() {
   const { theme } = useTheme();
-  const { setGenrePreferences } = useSettings();
+  const { genreExcludesPreferences, setGenreExcludesPreferences } =
+    useSettings();
   const [isOpen, setIsOpen] = useState(false);
-  const [items, setItems] = useState([
-    { label: "test", value: "test" },
-    { label: "test2", value: "test2" },
-    { label: "test3", value: "test3" },
-  ]);
+  const [items, setItems] = useState([]);
   const [value, setValue] = useState([]);
+  const [genres, setGenres] = useState([]);
 
   const themedStyles = styles(theme);
 
-  console.log(value);
+  useEffect(() => {
+    // if (
+    //   genreExcludesPreferences === undefined ||
+    //   genreExcludesPreferences === null
+    // ) {
+    //   setGenreExcludesPreferences([]);
+    // }
+    (async () => {
+      try {
+        // fetch available genres
+        const data = await JikanApi.fetchGenres();
+        setGenres(data.data);
+        // setGenreExcludesPreferences(data.data);
+        setItems(
+          data.data.map((genre) => {
+            return {
+              label: genre.name,
+              value: genre.mal_id,
+            };
+          })
+        );
+      } catch (e) {
+        console.log("GenrePreferenceScreen fetchGenres error", e);
+      }
+    })();
+  }, []);
+
+  useEffect(() => {
+    // save the value of the dropdown into async storage
+    setGenreExcludesPreferences(value);
+  }, value);
+
+  // console.log("value", value);
+  // console.log("local data", genreExcludesPreferences);
   return (
     <ThemedView style={themedStyles.container}>
       <SafeAreaView>
@@ -28,6 +60,8 @@ export default function GenrePreferenceScreen() {
           Pick your favourite genres from the list:
         </ThemedText>
         <DropDownPicker
+          placeholder="Select your favourite genre(s)"
+          loading={true}
           open={isOpen}
           setOpen={setIsOpen}
           value={value}

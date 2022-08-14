@@ -35,4 +35,8 @@ export const JikanApi = {
     const response = await fetch(`https://api.jikan.moe/v4/anime/${mal_id}`);
     return await response.json();
   },
+  fetchGenres: async () => {
+    const response = await fetch("https://api.jikan.moe/v4/genres/anime");
+    return await response.json();
+  },
 };

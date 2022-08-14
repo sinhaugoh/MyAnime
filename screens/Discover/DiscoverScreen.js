@@ -13,12 +13,15 @@ const Tab = createMaterialTopTabNavigator();
 
 export default function DiscoverScreen({ navigation }) {
   const { theme } = useTheme();
-  const { genrePreferences } = useSettings();
+  const { genreExcludesPreferences } = useSettings();
   const themedStyles = styles(theme);
 
   //navigate to genre settings screen if first time launch
   useEffect(() => {
-    if (genrePreferences === undefined || genrePreferences === null) {
+    if (
+      genreExcludesPreferences === undefined ||
+      genreExcludesPreferences === null
+    ) {
       navigation.navigate("Settings");
     }
   }, []);
