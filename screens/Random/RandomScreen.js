@@ -77,7 +77,7 @@ export default function RandomScreen({ navigation }) {
                   toggleFavouriteAnime(
                     animeData.mal_id,
                     animeData.title,
-                    animeData.image_url
+                    animeData.images.jpg.image_url
                   )
                 }
               />
@@ -93,7 +93,7 @@ export default function RandomScreen({ navigation }) {
                   toggleFavouriteAnime(
                     animeData.mal_id,
                     animeData.title,
-                    animeData.image_url
+                    animeData.images.jpg.image_url
                   )
                 }
               />
@@ -112,6 +112,7 @@ export default function RandomScreen({ navigation }) {
       [navigation]
     );
   });
+  console.log("anime data", animeData);
 
   if (error) return <ThemedText>{error}</ThemedText>;
 
