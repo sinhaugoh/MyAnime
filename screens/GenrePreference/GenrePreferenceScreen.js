@@ -14,24 +14,27 @@ export default function GenrePreferenceScreen() {
     useSettings();
   const [isOpen, setIsOpen] = useState(false);
   const [items, setItems] = useState([]);
-  const [value, setValue] = useState([]);
-  const [genres, setGenres] = useState([]);
+  const [value, setValue] = useState(genreExcludesPreferences ?? []);
+  // const [genres, setGenres] = useState([]);
+  // const [genreMalIds, setGenreMalIds] = useState([]);
 
   const themedStyles = styles(theme);
 
   useEffect(() => {
-    // if (
-    //   genreExcludesPreferences === undefined ||
-    //   genreExcludesPreferences === null
-    // ) {
-    //   setGenreExcludesPreferences([]);
-    // }
     (async () => {
       try {
-        // fetch available genres
+        // fetch all available genres
         const data = await JikanApi.fetchGenres();
-        setGenres(data.data);
-        // setGenreExcludesPreferences(data.data);
+        // setGenres(data.data);
+
+        // const allGenreMalIds = data.data.map((genre) => genre.mal_id);
+        // setGenreMalIds(allGenreMalIds);
+        // // set the value of dropdown
+        // excludedGenreSet = new Set(genreExcludesPreferences);
+        // setValue(
+        //   allGenreMalIds.filter((genre) => !excludedGenreSet.has(genre.mal_id))
+        // );
+
         setItems(
           data.data.map((genre) => {
             return {
@@ -47,20 +50,31 @@ export default function GenrePreferenceScreen() {
   }, []);
 
   useEffect(() => {
-    // save the value of the dropdown into async storage
+    // const selectedMalIdSet = new Set(value);
+    // // filter selected mal ids from the list of all genre mal ids
+    // const filteredGenreMalIds = genreMalIds.filter(
+    //   (malId) => !selectedMalIdSet.has(malId)
+    // );
+
+    // // save the value into async storage everytime the value change
+    // setGenreExcludesPreferences(filteredGenreMalIds);
+
+    // save the value into async storage everytime the value change
     setGenreExcludesPreferences(value);
-  }, value);
+  }, [value]);
 
   // console.log("value", value);
-  // console.log("local data", genreExcludesPreferences);
+  console.log("local data", genreExcludesPreferences);
+  // console.log("all genre list", genreMalIds);
+  console.log("value", value);
   return (
     <ThemedView style={themedStyles.container}>
       <SafeAreaView>
         <ThemedText style={themedStyles.title}>
-          Pick your favourite genres from the list:
+          Pick the genre(s) that you don't like.
         </ThemedText>
         <DropDownPicker
-          placeholder="Select your favourite genre(s)"
+          placeholder="Select genre(s) that you don't like."
           loading={true}
           open={isOpen}
           setOpen={setIsOpen}

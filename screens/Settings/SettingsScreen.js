@@ -15,8 +15,6 @@ export default function SettingsScreen({ navigation }) {
     }
   }, []);
 
-  console.log(genreExcludesPreferences);
-
   return (
     <View>
       <Text>Settings</Text>
