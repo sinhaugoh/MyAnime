@@ -8,6 +8,12 @@ export const JikanApi = {
     );
     return await response.json();
   },
+  fetchSearchResult: async (searchTerm, page) => {
+    const response = await fetch(
+      `https://api.jikan.moe/v4/anime?q=${searchTerm}&limit=${_PAGE_LIMIT}&page=${page}`
+    );
+    return await response.json();
+  },
   fetchTopRankedAnime: async (page) => {
     const response = await fetch(
       `https://api.jikan.moe/v4/top/anime?&limit=${_PAGE_LIMIT}&page=${page}`

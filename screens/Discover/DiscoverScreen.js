@@ -1,4 +1,4 @@
-import { View, Text, TextInput, StyleSheet } from "react-native";
+import { View, TextInput, StyleSheet } from "react-native";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import RecommendedView from "../../components/Discover/RecommendedView";
 import ForYouView from "../../components/Discover/ForYouView";
@@ -33,6 +33,11 @@ export default function DiscoverScreen({ navigation }) {
           style={themedStyles.searchInput}
           placeholder="Search..."
           placeholderTextColor={"gray"}
+          onSubmitEditing={(event) =>
+            navigation.navigate("Search result", {
+              searchTerm: event.nativeEvent.text,
+            })
+          }
         />
         <Feather
           name="search"
