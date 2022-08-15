@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useState, useRef } from "react";
-import { StyleSheet, ScrollView } from "react-native";
+import { StyleSheet, ScrollView, View, Share, Platform } from "react-native";
 import ThemedView from "../../components/shared/ThemedView";
 import AnimeDetail from "../../components/shared/AnimeDetail";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -25,34 +25,62 @@ export default function AnimeDetailScreen({ route, navigation }) {
     ageRating,
     rank,
     rating,
+    animeUrl,
   } = route.params;
+
+  async function onShareAnime() {
+    try {
+      const result = await Share.share(
+        Platform.OS === "ios"
+          ? {
+              url: animeUrl,
+            }
+          : { message: animeUrl }
+      );
+    } catch (e) {
+      console.log("AnimeDetailScreen Share.share error", e);
+    }
+  }
 
   useLayoutEffect(() => {
     // favourite button
     navigation.setOptions(
       {
-        headerRight: () =>
-          isFavouriteAnime(mal_id) ? (
+        headerRight: () => (
+          <View style={styles.row}>
             <MaterialIcons.Button
-              name="favorite"
+              name="ios-share"
               size={24}
               color={theme.primaryTextColor}
               backgroundColor="transparent"
               underlayColor="transparent"
               activeOpacity={1}
-              onPress={() => toggleFavouriteAnime(mal_id, title, image_url)}
+              onPress={onShareAnime}
+              style={{ marginRight: -10 }}
             />
-          ) : (
-            <MaterialIcons.Button
-              name="favorite-outline"
-              size={24}
-              color={theme.primaryTextColor}
-              backgroundColor="transparent"
-              underlayColor="transparent"
-              activeOpacity={1}
-              onPress={() => toggleFavouriteAnime(mal_id, title, image_url)}
-            />
-          ),
+            {isFavouriteAnime(mal_id) ? (
+              <MaterialIcons.Button
+                name="favorite"
+                size={24}
+                color={theme.primaryTextColor}
+                backgroundColor="transparent"
+                underlayColor="transparent"
+                activeOpacity={1}
+                onPress={() => toggleFavouriteAnime(mal_id, title, image_url)}
+              />
+            ) : (
+              <MaterialIcons.Button
+                name="favorite-outline"
+                size={24}
+                color={theme.primaryTextColor}
+                backgroundColor="transparent"
+                underlayColor="transparent"
+                activeOpacity={1}
+                onPress={() => toggleFavouriteAnime(mal_id, title, image_url)}
+              />
+            )}
+          </View>
+        ),
       },
       [navigation]
     );
@@ -89,5 +117,8 @@ const styles = StyleSheet.create({
   },
   spacer: {
     height: 50,
+  },
+  row: {
+    flexDirection: "row",
   },
 });

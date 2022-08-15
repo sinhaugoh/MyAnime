@@ -60,6 +60,7 @@ export default function RecommendedView() {
           rank={item.rank}
           genres={item.genres.map((genre) => genre.name)}
           synopsis={item.synopsis}
+          animeUrl={item.url}
         />
       )}
       style={themedStyle.container}
