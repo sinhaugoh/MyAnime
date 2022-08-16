@@ -4,9 +4,11 @@ import { useTheme } from "../../contexts/ThemeContext";
 import AnimeTile from "./AnimeTile";
 import LoadingIndicator from "../shared/LoadingIndicator";
 import { JikanApi } from "../../services/JikanApi";
+import { useSettings } from "../../contexts/SettingsContext";
 
 export default function RecommendedView() {
   const { theme } = useTheme();
+  const { genreExcludesPreferences } = useSettings();
   const themedStyle = styles(theme);
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState([]);
@@ -22,8 +24,10 @@ export default function RecommendedView() {
     if (hasNextPage) {
       (async function () {
         try {
-          const data = await JikanApi.fetchAiringAnime(page);
-
+          const data = await JikanApi.fetchAiringAnime(
+            page,
+            genreExcludesPreferences
+          );
           // append the data into data list
           setData((prevData) => [...prevData, ...data.data]);
           setHasNextPage(data.pagination.has_next_page);
