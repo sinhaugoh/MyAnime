@@ -112,7 +112,6 @@ export default function RandomScreen({ navigation }) {
       [navigation]
     );
   });
-  console.log("anime data", animeData);
 
   if (error) return <ThemedText>{error}</ThemedText>;
 

@@ -2,6 +2,7 @@ import { View, Image, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { useTheme } from "../../contexts/ThemeContext";
 import { useNavigation } from "@react-navigation/native";
 import { RFPercentage } from "react-native-responsive-fontsize";
+import React from "react";
 
 export default function AnimeTile(props) {
   const { theme } = useTheme();
@@ -43,3 +44,5 @@ const styles = (theme) =>
       fontSize: RFPercentage(2.2),
     },
   });
+
+export const MemoizedAnimeTile = React.memo(AnimeTile);

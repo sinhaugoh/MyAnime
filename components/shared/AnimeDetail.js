@@ -19,7 +19,6 @@ export default function AnimeDetail({
   rank,
   rating,
 }) {
-  console.log(mal_id);
   return (
     <ScrollView style={styles.scrollView}>
       <TopSection

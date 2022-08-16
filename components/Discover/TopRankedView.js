@@ -1,7 +1,7 @@
 import { StyleSheet, Text, FlatList } from "react-native";
 import { useState, useEffect } from "react";
 import { useTheme } from "../../contexts/ThemeContext";
-import AnimeTile from "./AnimeTile";
+import { MemoizedAnimeTile } from "./AnimeTile";
 import LoadingIndicator from "../shared/LoadingIndicator";
 import { JikanApi } from "../../services/JikanApi";
 
@@ -23,14 +23,6 @@ export default function TopRankedView() {
       (async function () {
         try {
           const data = await JikanApi.fetchTopRankedAnime(page);
-          // const formattedData = data.data.map((anime) => {
-          //   return {
-          //     mal_id: anime.mal_id,
-          //     title: anime.title_english,
-          //     image_url: anime.images.jpg.image_url,
-          //   };
-          // });
-
           // append the data into data list
           setData((prevData) => [...prevData, ...data.data]);
           setHasNextPage(data.pagination.has_next_page);
@@ -54,7 +46,7 @@ export default function TopRankedView() {
       data={data}
       numColumns={3}
       renderItem={({ item }) => (
-        <AnimeTile
+        <MemoizedAnimeTile
           mal_id={item.mal_id}
           title={item.title}
           japaneseTitle={item.title_japanese}

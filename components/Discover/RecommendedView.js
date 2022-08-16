@@ -1,7 +1,7 @@
 import { StyleSheet, Text, FlatList, View } from "react-native";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useTheme } from "../../contexts/ThemeContext";
-import AnimeTile from "./AnimeTile";
+import { MemoizedAnimeTile } from "./AnimeTile";
 import LoadingIndicator from "../shared/LoadingIndicator";
 import { JikanApi } from "../../services/JikanApi";
 import { useSettings } from "../../contexts/SettingsContext";
@@ -15,30 +15,57 @@ export default function RecommendedView() {
   const [error, setError] = useState(null);
   const [page, setPage] = useState(1);
   const [hasNextPage, setHasNextPage] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
+  const isRefetch = useRef(false);
 
   function fetchNextPage() {
     setPage((prevPage) => prevPage + 1);
   }
 
+  async function onRefresh() {
+    setPage(-1);
+    setRefreshing(true);
+    isRefetch.current = true;
+  }
+
   useEffect(() => {
-    if (hasNextPage) {
+    if (isRefetch.current) {
       (async function () {
         try {
           const data = await JikanApi.fetchAiringAnime(
-            page,
+            1,
             genreExcludesPreferences
           );
-          // append the data into data list
-          setData((prevData) => [...prevData, ...data.data]);
+          setData(data.data);
+          setPage(1);
           setHasNextPage(data.pagination.has_next_page);
         } catch (e) {
           setError(e);
         } finally {
-          setIsLoading(false);
+          setRefreshing(false);
+          isRefetch.current = false;
         }
       })();
+    } else {
+      if (hasNextPage) {
+        (async function () {
+          try {
+            const data = await JikanApi.fetchAiringAnime(
+              page,
+              genreExcludesPreferences
+            );
+            // append the data into data list
+            setData((prevData) => [...prevData, ...data.data]);
+            setHasNextPage(data.pagination.has_next_page);
+          } catch (e) {
+            setError(e);
+          } finally {
+            setIsLoading(false);
+          }
+        })();
+      }
     }
-  }, [page, hasNextPage]);
+  }, [page]);
 
   if (isLoading) return <LoadingIndicator />;
 
@@ -47,10 +74,12 @@ export default function RecommendedView() {
 
   return (
     <FlatList
+      onRefresh={onRefresh}
+      refreshing={refreshing}
       data={data}
       numColumns={3}
       renderItem={({ item }) => (
-        <AnimeTile
+        <MemoizedAnimeTile
           mal_id={item.mal_id}
           title={item.title}
           japaneseTitle={item.title_japanese}
