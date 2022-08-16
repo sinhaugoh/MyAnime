@@ -1,7 +1,6 @@
 import { View, TextInput, StyleSheet } from "react-native";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import RecommendedView from "../../components/Discover/RecommendedView";
-import ForYouView from "../../components/Discover/ForYouView";
 import TopRankedView from "../../components/Discover/TopRankedView";
 import LoadingIndicator from "../../components/shared/LoadingIndicator";
 import { Feather } from "@expo/vector-icons";
@@ -47,7 +46,6 @@ export default function DiscoverScreen({ navigation }) {
         />
       </View>
       <Tab.Navigator
-        //TODO: try to fix this problem for 13 pro max
         style={{ backgroundColor: theme.primaryBackgroundColor }}
         screenOptions={{
           tabBarLabelStyle: {
@@ -64,7 +62,6 @@ export default function DiscoverScreen({ navigation }) {
         }}
       >
         <Tab.Screen name="Recommended" component={RecommendedView} />
-        <Tab.Screen name="For You" component={ForYouView} />
         <Tab.Screen name="Top Ranked" component={TopRankedView} />
       </Tab.Navigator>
     </>
