@@ -15,8 +15,6 @@ export default function GenrePreferenceScreen() {
   const [isOpen, setIsOpen] = useState(false);
   const [items, setItems] = useState([]);
   const [value, setValue] = useState(genreExcludesPreferences ?? []);
-  // const [genres, setGenres] = useState([]);
-  // const [genreMalIds, setGenreMalIds] = useState([]);
 
   const themedStyles = styles(theme);
 
@@ -25,15 +23,6 @@ export default function GenrePreferenceScreen() {
       try {
         // fetch all available genres
         const data = await JikanApi.fetchGenres();
-        // setGenres(data.data);
-
-        // const allGenreMalIds = data.data.map((genre) => genre.mal_id);
-        // setGenreMalIds(allGenreMalIds);
-        // // set the value of dropdown
-        // excludedGenreSet = new Set(genreExcludesPreferences);
-        // setValue(
-        //   allGenreMalIds.filter((genre) => !excludedGenreSet.has(genre.mal_id))
-        // );
 
         setItems(
           data.data.map((genre) => {
@@ -50,23 +39,9 @@ export default function GenrePreferenceScreen() {
   }, []);
 
   useEffect(() => {
-    // const selectedMalIdSet = new Set(value);
-    // // filter selected mal ids from the list of all genre mal ids
-    // const filteredGenreMalIds = genreMalIds.filter(
-    //   (malId) => !selectedMalIdSet.has(malId)
-    // );
-
-    // // save the value into async storage everytime the value change
-    // setGenreExcludesPreferences(filteredGenreMalIds);
-
-    // save the value into async storage everytime the value change
     setGenreExcludesPreferences(value);
   }, [value]);
 
-  // console.log("value", value);
-  console.log("local data", genreExcludesPreferences);
-  // console.log("all genre list", genreMalIds);
-  console.log("value", value);
   return (
     <ThemedView style={themedStyles.container}>
       <SafeAreaView>

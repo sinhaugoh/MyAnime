@@ -55,7 +55,6 @@ export default function FavouritesScreen() {
     }
 
     setCategorisedFavouriteAnimes(categorisedFavAnime);
-    console.log("categorisedFavAnime", categorisedFavAnime);
   }, [favouriteAnimes]);
 
   if (!categorisedFavouriteAnimes)

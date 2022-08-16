@@ -74,7 +74,6 @@ export default function ProgressFormModal(props) {
           setAnimeData(data.data);
 
           // create dropdown items for episodes
-          console.log("episode count", data.data.episodes);
           let tempEpisodeItems = [];
           if (data.data.episodes) {
             for (let i = 1; i < parseInt(data.data.episodes) + 1; i++) {

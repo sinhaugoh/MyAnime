@@ -63,8 +63,6 @@ export function FavouriteAnimesProvider({ children }) {
   const isFavouriteAnime = (mal_id) =>
     favouriteAnimes.find((anime) => anime.mal_id === mal_id) ? true : false;
 
-  // console.log(favouriteAnimes);
-
   return (
     <FavouriteAnimesContext.Provider
       value={{
