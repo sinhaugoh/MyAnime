@@ -12,7 +12,6 @@ export default function SettingsScreen({ navigation }) {
 
   const cellProps = {
     cellStyle: "basic",
-    accessory: "DisclosureIndicator",
     backgroundColor: theme.primaryBackgroundColor,
     titleTextColor: theme.primaryTextColor,
   };
@@ -48,10 +47,8 @@ export default function SettingsScreen({ navigation }) {
             {...cellProps}
             title="Genre blacklist"
             onPress={() => navigation.navigate("Genre preference")}
+            accessory="DisclosureIndicator"
           />
-        </Section>
-        <Section header="Others">
-          <Cell {...cellProps} title="Clear data" />
         </Section>
       </TableView>
     </ScrollView>
