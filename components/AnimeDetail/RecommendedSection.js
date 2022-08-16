@@ -41,6 +41,7 @@ export default function RecommendedSection({ mal_id }) {
             <MemoizedCardTile
               image_url={item.entry.images.jpg.image_url}
               title={item.entry.title}
+              animeUrl={item.entry.url}
             />
           )}
           horizontal={true}

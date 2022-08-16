@@ -41,6 +41,7 @@ export default function CharactersSection({ mal_id }) {
             <MemoizedCardTile
               image_url={item.character.images.jpg.image_url}
               title={item.character.name}
+              animeUrl={item.character.url}
             />
           )}
           horizontal={true}

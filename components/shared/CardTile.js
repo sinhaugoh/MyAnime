@@ -1,16 +1,23 @@
 import React from "react";
-import { View, Image, StyleSheet } from "react-native";
+import { View, Image, StyleSheet, TouchableOpacity } from "react-native";
 import ThemedText from "./ThemedText";
 import { RFPercentage } from "react-native-responsive-fontsize";
+import { useNavigation } from "@react-navigation/native";
 
-export function CardTile({ image_url, title }) {
+export function CardTile({ image_url, title, animeUrl }) {
+  const navigation = useNavigation();
   return (
-    <View style={styles.container}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={() =>
+        navigation.navigate("Anime web view", { animeUrl: animeUrl })
+      }
+    >
       <Image style={styles.image} source={{ uri: image_url }} />
       <ThemedText numberOfLines={2} ellipsizeMode="tail" style={styles.title}>
         {title}
       </ThemedText>
-    </View>
+    </TouchableOpacity>
   );
 }
 
