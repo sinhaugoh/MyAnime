@@ -64,6 +64,7 @@ export default function GenrePreferenceScreen() {
           style={themedStyles.dropdown}
           textStyle={themedStyles.dropdownText}
           labelStyle={themedStyles.dropdownLabel}
+          dropDownTextStyle={themedStyles.dropdownText}
           dropDownContainerStyle={themedStyles.dropdownContainer}
         />
       </SafeAreaView>
@@ -93,8 +94,11 @@ const styles = (theme) =>
       borderTopWidth: 1,
       borderRadius: 0,
     },
-    dropdownText: {},
+    dropdownText: {
+      color: theme.primaryTextColor,
+    },
     dropdownLabel: {
-      backgroundColor: theme.formInputColor,
+      backgroundColor: theme.primaryTextColor,
+      color: theme.primaryTextColor,
     },
   });

@@ -1,13 +1,13 @@
-import { View, Text, Button, ScrollView, StyleSheet } from "react-native";
-import ThemedView from "../../components/shared/ThemedView";
+import { ScrollView, StyleSheet, Switch } from "react-native";
 import { useSettings } from "../../contexts/SettingsContext";
 import { useEffect } from "react";
 import { useTheme } from "../../contexts/ThemeContext";
 import { TableView, Section, Cell } from "react-native-tableview-simple";
+import { DarkTheme } from "../../const";
 
 export default function SettingsScreen({ navigation }) {
   const { genreExcludesPreferences } = useSettings();
-  const { theme } = useTheme();
+  const { theme, toggleTheme } = useTheme();
   const themedStyles = styles(theme);
 
   const cellProps = {
@@ -31,7 +31,17 @@ export default function SettingsScreen({ navigation }) {
     <ScrollView style={themedStyles.scrollView}>
       <TableView>
         <Section header="Appearance">
-          <Cell {...cellProps} title="Theme" />
+          <Cell
+            {...cellProps}
+            title="Dark Theme"
+            onPress={toggleTheme}
+            cellAccessoryView={
+              <Switch
+                onValueChange={toggleTheme}
+                value={JSON.stringify(theme) === JSON.stringify(DarkTheme)}
+              />
+            }
+          />
         </Section>
         <Section header="Preferences">
           <Cell
@@ -55,10 +65,3 @@ const styles = (theme) =>
       height: "100%",
     },
   });
-// <View>
-//   <Text>Settings</Text>
-//   <Button
-//     onPress={() => navigation.navigate("Genre preference")}
-//     title="Genre preference"
-//   />
-// </View>

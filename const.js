@@ -7,9 +7,19 @@ export const DarkTheme = {
   borderOutline: "#e3e3e3",
   formInputColor: "#34373E",
 };
+export const LightTheme = {
+  primaryBackgroundColor: "#f2f2f2",
+  secondaryBackgroundColor: "#d9d9d9",
+  linkColor: "#6d68e8",
+  bottomTabBarColor: "#fff",
+  primaryTextColor: "#000",
+  borderOutline: "#e3e3e3",
+  formInputColor: "#fff",
+};
 
 export const favouriteAnimesKey = "@favouriteAnimes";
 export const genrePreferencesKey = "@genrePreferencesKey";
+export const themeKey = "@themeKey";
 
 export const categories = [
   "Newly added",
