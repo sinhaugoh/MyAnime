@@ -1,3 +1,4 @@
+import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import DiscoverNavigator from "../../navigation/DiscoverNavigator";
 import RandomScreen from "../../screens/Random/RandomScreen";

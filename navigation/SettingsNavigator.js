@@ -1,3 +1,4 @@
+import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import GenrePreferenceScreen from "../screens/GenrePreference/GenrePreferenceScreen";
 import SettingsScreen from "../screens/Settings/SettingsScreen";

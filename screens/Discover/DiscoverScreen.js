@@ -1,3 +1,4 @@
+import React from "react";
 import { View, TextInput, StyleSheet } from "react-native";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import RecommendedView from "../../components/Discover/RecommendedView";

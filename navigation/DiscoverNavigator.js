@@ -1,10 +1,10 @@
+import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import DiscoverScreen from "../screens/Discover/DiscoverScreen";
 import AnimeDetailScreen from "../screens/AnimeDetail/AnimeDetailScreen";
 import SearchResultScreen from "../screens/SearchResult/SearchResultScreen";
 import AnimeWebView from "../components/shared/AnimeWebView";
 import { useTheme } from "../contexts/ThemeContext";
-import { StyleSheet } from "react-native";
 import { useState } from "react";
 
 const Stack = createStackNavigator();

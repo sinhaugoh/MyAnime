@@ -1,3 +1,4 @@
+import React from "react";
 import ThemedView from "../shared/ThemedView";
 import ThemedText from "../shared/ThemedText";
 import { Image, StyleSheet, View } from "react-native";

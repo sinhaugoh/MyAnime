@@ -1,3 +1,4 @@
+import React from "react";
 import ThemedView from "../../components/shared/ThemedView";
 import ThemedText from "../../components/shared/ThemedText";
 import DropDownPicker from "react-native-dropdown-picker";

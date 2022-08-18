@@ -1,3 +1,4 @@
+import React from "react";
 import { StatusBar } from "react-native";
 import BottomTabBar from "./components/shared/BottomTabBar";
 import { ThemeProvider } from "./contexts/ThemeContext";

@@ -1,3 +1,4 @@
+import React from "react";
 import { ScrollView, StyleSheet, Switch } from "react-native";
 import { useSettings } from "../../contexts/SettingsContext";
 import { useEffect } from "react";

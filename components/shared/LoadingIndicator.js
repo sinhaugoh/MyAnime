@@ -1,3 +1,4 @@
+import React from "react";
 import { ActivityIndicator, StyleSheet } from "react-native";
 import { useTheme } from "../../contexts/ThemeContext";
 

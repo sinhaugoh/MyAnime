@@ -1,3 +1,4 @@
+import React from "react";
 import { View, StyleSheet } from "react-native";
 import ThemedText from "../shared/ThemedText";
 import { RFPercentage } from "react-native-responsive-fontsize";

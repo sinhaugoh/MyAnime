@@ -1,3 +1,4 @@
+import React from "react";
 import { StyleSheet, Text, FlatList } from "react-native";
 import { useState, useEffect } from "react";
 import { useTheme } from "../../contexts/ThemeContext";

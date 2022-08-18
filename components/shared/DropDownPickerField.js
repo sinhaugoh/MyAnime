@@ -1,3 +1,4 @@
+import React from "react";
 import DropDownPicker from "react-native-dropdown-picker";
 import { useState, useEffect } from "react";
 import { StyleSheet } from "react-native";

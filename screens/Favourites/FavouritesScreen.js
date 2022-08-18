@@ -1,4 +1,5 @@
-import { View, StyleSheet, ScrollView, SectionList } from "react-native";
+import React from "react";
+import { View, StyleSheet, SectionList } from "react-native";
 import ThemedView from "../../components/shared/ThemedView";
 import { useFavouriteAnimes } from "../../contexts/FavouriteAnimesContext";
 import FavouriteListTile from "../../components/Favourites/FavouriteListTile";
@@ -7,7 +8,7 @@ import ThemedText from "../../components/shared/ThemedText";
 import ProgressFormModal from "../../components/Favourites/ProgressFormModal";
 import { useTheme } from "../../contexts/ThemeContext";
 
-import { useRef, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { RFPercentage } from "react-native-responsive-fontsize";
 
 export default function FavouritesScreen() {

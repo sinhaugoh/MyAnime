@@ -1,3 +1,4 @@
+import React from "react";
 import LoadingIndicator from "../../components/shared/LoadingIndicator";
 import { Text, StyleSheet, TouchableOpacity } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";

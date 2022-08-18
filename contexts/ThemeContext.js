@@ -1,3 +1,4 @@
+import React from "react";
 import { useContext, createContext, useState } from "react";
 import { DarkTheme, LightTheme } from "../const";
 import { ActivityIndicator } from "react-native";

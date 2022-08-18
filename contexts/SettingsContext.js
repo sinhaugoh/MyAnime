@@ -1,4 +1,5 @@
-import { useState, useContext, createContext } from "react";
+import React from "react";
+import { useContext, createContext } from "react";
 import useAsyncStorage from "../hooks/useAsyncStorage";
 import { genrePreferencesKey } from "../const";
 import LoadingIndicator from "../components/shared/LoadingIndicator";

@@ -1,4 +1,5 @@
-import { StyleSheet, Text, FlatList, View } from "react-native";
+import React from "react";
+import { StyleSheet, Text, FlatList } from "react-native";
 import { useState, useEffect, useRef } from "react";
 import { useTheme } from "../../contexts/ThemeContext";
 import { MemoizedAnimeTile } from "./AnimeTile";

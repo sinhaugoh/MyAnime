@@ -1,4 +1,5 @@
-import { useContext, createContext, useState, useEffect, useRef } from "react";
+import React from "react";
+import { useContext, createContext, useRef } from "react";
 import useAsyncStorage from "../hooks/useAsyncStorage";
 import LoadingIndicator from "../components/shared/LoadingIndicator";
 import { favouriteAnimesKey, categories } from "../const";

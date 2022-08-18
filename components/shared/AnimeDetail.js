@@ -1,3 +1,4 @@
+import React from "react";
 import { StyleSheet, ScrollView, View } from "react-native";
 import TopSection from "../../components/AnimeDetail/TopSection";
 import MiddleSection from "../../components/AnimeDetail/MiddleSection";

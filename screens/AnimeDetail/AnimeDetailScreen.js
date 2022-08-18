@@ -1,10 +1,10 @@
-import { useEffect, useLayoutEffect, useState, useRef } from "react";
-import { StyleSheet, ScrollView, View, Share, Platform } from "react-native";
+import React from "react";
+import { useLayoutEffect } from "react";
+import { StyleSheet, View, Share, Platform } from "react-native";
 import ThemedView from "../../components/shared/ThemedView";
 import AnimeDetail from "../../components/shared/AnimeDetail";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useTheme } from "../../contexts/ThemeContext";
-import useAsyncStorage from "../../hooks/useAsyncStorage";
 import { useFavouriteAnimes } from "../../contexts/FavouriteAnimesContext";
 
 export default function AnimeDetailScreen({ route, navigation }) {

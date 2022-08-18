@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Text,
   View,
@@ -13,7 +14,6 @@ import { useTheme } from "../../contexts/ThemeContext";
 import { RFPercentage } from "react-native-responsive-fontsize";
 import { useEffect, useRef, useState } from "react";
 import { JikanApi } from "../../services/JikanApi";
-import DropDownPickerField from "../shared/DropDownPickerField";
 import LoadingIndicator from "../shared/LoadingIndicator";
 import RNPickerSelect from "react-native-picker-select";
 import { useFavouriteAnimes } from "../../contexts/FavouriteAnimesContext";
@@ -124,7 +124,7 @@ export default function ProgressFormModal(props) {
         ) : (
           <>
             <ThemedText style={themedStyles.title}>
-              {animeData.title}
+              {animeData.title ?? null}
             </ThemedText>
             <ThemedText style={themedStyles.label}>Episode</ThemedText>
             <RNPickerSelect
