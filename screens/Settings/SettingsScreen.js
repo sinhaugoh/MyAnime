@@ -25,7 +25,7 @@ export default function SettingsScreen({ navigation }) {
     ) {
       navigation.navigate("Genre preference");
     }
-  }, []);
+  }, [genreExcludesPreferences, navigation]);
 
   return (
     <ScrollView style={themedStyles.scrollView}>

@@ -27,7 +27,7 @@ export default function RecommendedSection({ mal_id }) {
     return () => {
       is_mounted = false;
     };
-  }, []);
+  }, [mal_id]);
 
   return (
     <>

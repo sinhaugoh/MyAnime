@@ -24,7 +24,7 @@ export default function DiscoverScreen({ navigation }) {
     ) {
       navigation.navigate("Settings");
     }
-  }, []);
+  }, [genreExcludesPreferences, navigation]);
 
   return (
     <>

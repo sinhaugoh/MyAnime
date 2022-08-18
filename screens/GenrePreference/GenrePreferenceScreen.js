@@ -41,7 +41,7 @@ export default function GenrePreferenceScreen() {
 
   useEffect(() => {
     setGenreExcludesPreferences(value);
-  }, [value]);
+  }, [value, setGenreExcludesPreferences]);
 
   return (
     <ThemedView style={themedStyles.container}>

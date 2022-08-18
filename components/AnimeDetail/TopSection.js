@@ -29,14 +29,14 @@ export default function TopSection({
             <ThemedText style={styles.text}>{episodes ?? "-"}</ThemedText>
           </View>
         </View>
-        <View style={[styles.row]}>
+        <View style={styles.row}>
           <View style={styles.col}>
             <ThemedText style={[styles.bold, styles.text]}>Year</ThemedText>
             <ThemedText style={styles.text}>{year ?? "-"}</ThemedText>
           </View>
-          <View style={[styles.col]}>
+          <View style={styles.col}>
             <ThemedText style={[styles.bold, styles.text]}>Studio</ThemedText>
-            <ThemedText numberOfLines={1} style={[styles.text]}>
+            <ThemedText numberOfLines={1} style={styles.text}>
               {studios?.[0]?.name ?? "-"}
             </ThemedText>
           </View>
