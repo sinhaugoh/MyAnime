@@ -61,6 +61,7 @@ export default function TopRankedView() {
           rank={item.rank}
           genres={item.genres.map((genre) => genre.name)}
           synopsis={item.synopsis}
+          animeUrl={item.url}
         />
       )}
       style={themedStyle.container}
