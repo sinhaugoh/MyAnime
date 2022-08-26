@@ -63,9 +63,7 @@ export default function GenrePreferenceScreen() {
           searchable={true}
           theme="DARK"
           style={themedStyles.dropdown}
-          textStyle={themedStyles.dropdownText}
           labelStyle={themedStyles.dropdownLabel}
-          dropDownTextStyle={themedStyles.dropdownText}
           dropDownContainerStyle={themedStyles.dropdownContainer}
         />
       </SafeAreaView>
@@ -94,9 +92,6 @@ const styles = (theme) =>
       borderWidth: 0,
       borderTopWidth: 1,
       borderRadius: 0,
-    },
-    dropdownText: {
-      color: theme.primaryTextColor,
     },
     dropdownLabel: {
       backgroundColor: theme.primaryTextColor,
