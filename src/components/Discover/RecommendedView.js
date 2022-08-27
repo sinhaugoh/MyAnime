@@ -110,7 +110,7 @@ export default function RecommendedView() {
           <Text style={themedStyles.theEndText}>You have reach the end</Text>
         )
       }
-      onEndReachedThreshold={0.2}
+      onEndReachedThreshold={0}
       onEndReached={hasNextPage ? fetchNextPage : null}
     />
   );
