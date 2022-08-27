@@ -99,10 +99,6 @@ export default function ProgressFormModal(props) {
     }
   }, [props.mal_id]);
 
-  useEffect(() => {
-    console.log("formstate", formState);
-  }, [formState]);
-
   return (
     <Modal
       {...props}

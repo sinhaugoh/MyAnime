@@ -23,7 +23,6 @@ export default function RandomScreen({ navigation }) {
       try {
         await fetchRandomAnime();
       } catch (e) {
-        console.log(e);
         setError(e);
       } finally {
         setIsLoading(false);
@@ -53,7 +52,6 @@ export default function RandomScreen({ navigation }) {
       setIsLoading(true);
       await fetchRandomAnime();
     } catch (e) {
-      console.log(e);
       setError(e);
     } finally {
       setIsLoading(false);

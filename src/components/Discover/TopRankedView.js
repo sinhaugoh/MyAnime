@@ -28,7 +28,6 @@ export default function TopRankedView() {
           setData((prevData) => [...prevData, ...data.data]);
           setHasNextPage(data.pagination.has_next_page);
         } catch (e) {
-          console.log(e);
           setError(e);
         } finally {
           setIsLoading(false);
