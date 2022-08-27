@@ -1,9 +1,9 @@
 import React from "react";
 import { StatusBar } from "react-native";
-import BottomTabBar from "./components/shared/BottomTabBar";
-import { ThemeProvider } from "./contexts/ThemeContext";
-import { FavouriteAnimesProvider } from "./contexts/FavouriteAnimesContext";
-import { SettingsProvider } from "./contexts/SettingsContext";
+import BottomTabBar from "./src/navigation/BottomTabBar";
+import { ThemeProvider } from "./src/contexts/ThemeContext";
+import { FavouriteAnimesProvider } from "./src/contexts/FavouriteAnimesContext";
+import { SettingsProvider } from "./src/contexts/SettingsContext";
 import * as ScreenOrientation from "expo-screen-orientation";
 
 export default function App() {

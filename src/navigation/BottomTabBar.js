@@ -1,15 +1,15 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import DiscoverNavigator from "../../navigation/DiscoverNavigator";
-import RandomScreen from "../../screens/Random/RandomScreen";
-import FavouritesScreen from "../../screens/Favourites/FavouritesScreen";
-import { useTheme } from "../../contexts/ThemeContext";
+import DiscoverNavigator from "./DiscoverNavigator";
+import RandomScreen from "../screens/Random/RandomScreen";
+import FavouritesScreen from "../screens/Favourites/FavouritesScreen";
+import { useTheme } from "../contexts/ThemeContext";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Feather } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
-import SettingsNavigator from "../../navigation/SettingsNavigator";
+import SettingsNavigator from "./SettingsNavigator";
 
 const Tab = createBottomTabNavigator();
 
