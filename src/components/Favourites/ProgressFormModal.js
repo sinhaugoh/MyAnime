@@ -89,7 +89,7 @@ export default function ProgressFormModal(props) {
 
           setEpisodeItems(tempEpisodeItems);
         } catch (e) {
-          console.error("ProgressFormModal fetchAnimeById error:", e);
+          console.log("ProgressFormModal fetchAnimeById error:", e);
           setError(null);
           setError(e);
         } finally {
@@ -98,6 +98,14 @@ export default function ProgressFormModal(props) {
       })();
     }
   }, [props.mal_id]);
+
+  if (error) {
+    <Modal>
+      <ThemedView style={styles.container}>
+        <ThemedText>Error occured. Please try again later.</ThemedText>
+      </ThemedView>
+    </Modal>;
+  }
 
   return (
     <Modal
@@ -120,7 +128,7 @@ export default function ProgressFormModal(props) {
         ) : (
           <>
             <ThemedText style={themedStyles.title}>
-              {animeData.title ?? null}
+              {animeData?.title ?? ""}
             </ThemedText>
             <ThemedText style={themedStyles.label}>Episode</ThemedText>
             <RNPickerSelect

@@ -1,8 +1,9 @@
 import React from "react";
-import { StyleSheet, Text, FlatList } from "react-native";
+import { StyleSheet, Text, FlatList, View } from "react-native";
 import { useState, useEffect, useRef } from "react";
 import { useTheme } from "../../contexts/ThemeContext";
 import { MemoizedAnimeTile } from "./AnimeTile";
+import ThemedText from "../shared/ThemedText";
 import LoadingIndicator from "../shared/LoadingIndicator";
 import { JikanApi } from "../../services/JikanApi";
 import { useSettings } from "../../contexts/SettingsContext";
@@ -10,7 +11,7 @@ import { useSettings } from "../../contexts/SettingsContext";
 export default function RecommendedView() {
   const { theme } = useTheme();
   const { genreExcludesPreferences } = useSettings();
-  const themedStyle = styles(theme);
+  const themedStyles = styles(theme);
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
@@ -70,8 +71,12 @@ export default function RecommendedView() {
 
   if (isLoading) return <LoadingIndicator />;
 
-  //TODO: implement error screen
-  if (error) return <Text>Error fetching data from the API</Text>;
+  if (error)
+    return (
+      <View style={themedStyles.container}>
+        <ThemedText>Error fetching data from the API</ThemedText>
+      </View>
+    );
 
   return (
     <FlatList
@@ -97,12 +102,12 @@ export default function RecommendedView() {
           animeUrl={item.url}
         />
       )}
-      style={themedStyle.container}
+      style={themedStyles.container}
       ListFooterComponent={
         hasNextPage ? (
           LoadingIndicator
         ) : (
-          <Text style={themedStyle.theEndText}>You have reach the end</Text>
+          <Text style={themedStyles.theEndText}>You have reach the end</Text>
         )
       }
       onEndReachedThreshold={0.2}

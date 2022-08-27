@@ -3,6 +3,7 @@ import { StyleSheet, Text, FlatList, View } from "react-native";
 import { useState, useEffect } from "react";
 import { useTheme } from "../../contexts/ThemeContext";
 import AnimeTile from "../../components/Discover/AnimeTile";
+import ThemedText from "../../components/shared/ThemedText";
 import LoadingIndicator from "../../components/shared/LoadingIndicator";
 import { JikanApi } from "../../services/JikanApi";
 
@@ -12,7 +13,7 @@ export default function SearchResultScreen({
   },
 }) {
   const { theme } = useTheme();
-  const themedStyle = styles(theme);
+  const themedStyles = styles(theme);
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
@@ -43,8 +44,12 @@ export default function SearchResultScreen({
 
   if (isLoading) return <LoadingIndicator />;
 
-  //TODO: implement error screen
-  if (error) return <Text>Error fetching data from the API</Text>;
+  if (error)
+    return (
+      <View style={themedStyles.container}>
+        <ThemedText>Error fetching data from the API</ThemedText>
+      </View>
+    );
 
   return (
     <FlatList
@@ -67,12 +72,12 @@ export default function SearchResultScreen({
           synopsis={item.synopsis}
         />
       )}
-      style={themedStyle.container}
+      style={themedStyles.container}
       ListFooterComponent={
         hasNextPage ? (
           LoadingIndicator
         ) : (
-          <Text style={themedStyle.theEndText}>You have reach the end</Text>
+          <Text style={themedStyles.theEndText}>You have reach the end</Text>
         )
       }
       onEndReachedThreshold={0.2}
