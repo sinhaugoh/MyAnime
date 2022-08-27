@@ -36,7 +36,11 @@ export default function FavouritesScreen() {
   }, [favouriteAnimes]);
 
   if (!categorisedFavouriteAnimes)
-    return <ThemedText>You have not favourite any anime yet!</ThemedText>;
+    return (
+      <ThemedView style={themedStyles.container}>
+        <ThemedText>You have not favourite any anime yet!</ThemedText>
+      </ThemedView>
+    );
 
   return (
     <>
