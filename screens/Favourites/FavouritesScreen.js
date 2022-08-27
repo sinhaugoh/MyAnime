@@ -3,7 +3,7 @@ import { View, StyleSheet, SectionList } from "react-native";
 import ThemedView from "../../components/shared/ThemedView";
 import { useFavouriteAnimes } from "../../contexts/FavouriteAnimesContext";
 import FavouriteListTile from "../../components/Favourites/FavouriteListTile";
-import { categories } from "../../const";
+import { categoriseFavouriteAnimes } from "../../utils";
 import ThemedText from "../../components/shared/ThemedText";
 import ProgressFormModal from "../../components/Favourites/ProgressFormModal";
 import { useTheme } from "../../contexts/ThemeContext";
@@ -32,30 +32,7 @@ export default function FavouritesScreen() {
 
   // categories favourite animes
   useEffect(() => {
-    let categorisedFavAnime = [];
-    // initialise categories
-    for (category of categories) {
-      categorisedFavAnime.push({
-        category: category,
-        data: [],
-      });
-    }
-
-    for (const favouriteAnime of favouriteAnimes) {
-      const categoryIndex = categorisedFavAnime.findIndex(
-        (element) => element.category === favouriteAnime.category
-      );
-
-      if (categoryIndex >= 0) {
-        // append the current anime
-        categorisedFavAnime[categoryIndex] = {
-          ...categorisedFavAnime[categoryIndex],
-          data: [...categorisedFavAnime[categoryIndex].data, favouriteAnime],
-        };
-      }
-    }
-
-    setCategorisedFavouriteAnimes(categorisedFavAnime);
+    setCategorisedFavouriteAnimes(categoriseFavouriteAnimes(favouriteAnimes));
   }, [favouriteAnimes]);
 
   if (!categorisedFavouriteAnimes)
