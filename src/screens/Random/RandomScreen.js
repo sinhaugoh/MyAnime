@@ -1,6 +1,7 @@
 import React from "react";
+import * as Network from "expo-network";
 import LoadingIndicator from "../../components/shared/LoadingIndicator";
-import { Text, StyleSheet, TouchableOpacity } from "react-native";
+import { Text, StyleSheet, TouchableOpacity, Alert } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import ThemedView from "../../components/shared/ThemedView";
 import AnimeDetail from "../../components/shared/AnimeDetail";
@@ -15,8 +16,7 @@ export default function RandomScreen({ navigation }) {
   const [animeData, setAnimeData] = useState(null);
   const [error, setError] = useState(null);
   const { theme } = useTheme();
-  const { favouriteAnimes, toggleFavouriteAnime, isFavouriteAnime } =
-    useFavouriteAnimes();
+  const { toggleFavouriteAnime, isFavouriteAnime } = useFavouriteAnimes();
 
   useEffect(() => {
     (async () => {
@@ -48,9 +48,19 @@ export default function RandomScreen({ navigation }) {
 
   async function handleRefreshButton() {
     try {
-      setAnimeData(null);
-      setIsLoading(true);
-      await fetchRandomAnime();
+      // check for network connection
+      const networkState = await Network.getNetworkStateAsync();
+      if (networkState.isInternetReachable) {
+        setIsLoading(true);
+        setAnimeData(null);
+        await fetchRandomAnime();
+      } else {
+        Alert.alert(
+          "Note connected to Internet",
+          "Please check your Internet connection. MyAnime requires Internet connection to serve you better.",
+          [{ text: "OK", onPress: () => console.log("OK Pressed") }]
+        );
+      }
     } catch (e) {
       setError(e);
     } finally {
@@ -112,7 +122,12 @@ export default function RandomScreen({ navigation }) {
     );
   });
 
-  if (error) return <ThemedText>{error}</ThemedText>;
+  if (error)
+    return (
+      <ThemedView style={styles.container}>
+        <ThemedText>Error occured. Please try again later.</ThemedText>
+      </ThemedView>
+    );
 
   return (
     <ThemedView style={styles.container}>
