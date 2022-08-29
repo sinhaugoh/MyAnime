@@ -12,7 +12,6 @@ export function useTheme() {
 }
 
 export function ThemeProvider({ children }) {
-  // const [theme, setTheme] = useState(DarkTheme);
   const [theme, setTheme, hasRetrievedvalue] = useAsyncStorage(
     themeKey,
     DarkTheme

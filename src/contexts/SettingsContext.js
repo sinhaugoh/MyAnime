@@ -17,11 +17,6 @@ export function SettingsProvider({ children }) {
     hasRetrievedValue,
   ] = useAsyncStorage(genrePreferencesKey);
 
-  // function excludeGenre(genre) {
-  //   if (genreExcludesPreferences === undefined || genreExcludesPreferences === null) return;
-
-  // }
-
   return (
     <SettingsContext.Provider
       value={{ genreExcludesPreferences, setGenreExcludesPreferences }}
@@ -30,12 +25,3 @@ export function SettingsProvider({ children }) {
     </SettingsContext.Provider>
   );
 }
-// {hasRetrievedValue ? (
-//   genrePreferences === undefined || genrePreferences === null ? (
-//     <PreferenceScreen />
-//   ) : (
-//     children
-//   )
-// ) : (
-//   <LoadingIndicator />
-// )}
