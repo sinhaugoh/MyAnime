@@ -5,13 +5,13 @@
 To run this project, install the required npm packages:
 
 ```
-$ npm install
+npm install
 ```
 
 Then, run the application with:
 
 ```
-$ npm start
+npm start
 ```
 
 ## Technologies
