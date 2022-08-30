@@ -56,7 +56,7 @@ export default function RandomScreen({ navigation }) {
         await fetchRandomAnime();
       } else {
         Alert.alert(
-          "Note connected to Internet",
+          "Not connected to Internet",
           "Please check your Internet connection. MyAnime requires Internet connection to serve you better.",
           [{ text: "OK", onPress: () => console.log("OK Pressed") }]
         );
