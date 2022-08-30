@@ -6,7 +6,7 @@ import TopRankedView from "../../components/Discover/TopRankedView";
 import LoadingIndicator from "../../components/shared/LoadingIndicator";
 import { Feather } from "@expo/vector-icons";
 import { useTheme } from "../../contexts/ThemeContext";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSettings } from "../../contexts/SettingsContext";
 
 const Tab = createMaterialTopTabNavigator();
@@ -15,6 +15,7 @@ export default function DiscoverScreen({ navigation }) {
   const { theme } = useTheme();
   const { genreExcludesPreferences } = useSettings();
   const themedStyles = styles(theme);
+  const [searchInput, setSearchInput] = useState("");
 
   //navigate to genre settings screen if first time launch
   useEffect(() => {
@@ -26,6 +27,14 @@ export default function DiscoverScreen({ navigation }) {
     }
   }, [genreExcludesPreferences, navigation]);
 
+  function handleSearch() {
+    if (searchInput) {
+      navigation.navigate("Search result", {
+        searchTerm: searchInput,
+      });
+    }
+  }
+
   return (
     <>
       <View style={themedStyles.searchContainer}>
@@ -33,17 +42,18 @@ export default function DiscoverScreen({ navigation }) {
           style={themedStyles.searchInput}
           placeholder="Search..."
           placeholderTextColor={"gray"}
-          onSubmitEditing={(event) =>
-            navigation.navigate("Search result", {
-              searchTerm: event.nativeEvent.text,
-            })
-          }
+          onChangeText={(newText) => setSearchInput(newText)}
+          onSubmitEditing={(event) => handleSearch()}
         />
         <Feather
           name="search"
           size={24}
           color="gray"
+          backgroundColor="transparent"
+          underlayColor="transparent"
+          activeOpacity={1}
           style={themedStyles.searchIcon}
+          onPress={handleSearch}
         />
       </View>
       <Tab.Navigator
