@@ -1,4 +1,4 @@
-# MyAnime mobile application
+# MyAnime
 
 ## Setup
 
