@@ -30,7 +30,7 @@ export default function AnimeDetailScreen({ route, navigation }) {
 
   async function onShareAnime() {
     try {
-      const result = await Share.share(
+      await Share.share(
         Platform.OS === "ios"
           ? {
               url: animeUrl,
