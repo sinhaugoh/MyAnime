@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MiddleSection /> should match snapshot 1`] = `
+<View>
+  <Text
+    style={
+      Array [
+        Object {
+          "fontSize": 40,
+          "fontWeight": "700",
+        },
+        Object {
+          "color": "#e3e3e3",
+        },
+      ]
+    }
+  >
+    title
+  </Text>
+  <Text
+    style={
+      Array [
+        Object {
+          "fontSize": 37,
+          "marginBottom": 8,
+        },
+        Object {
+          "color": "#e3e3e3",
+        },
+      ]
+    }
+  >
+    japaneseTitle
+  </Text>
+  <Text
+    style={
+      Array [
+        Object {
+          "fontSize": 27,
+          "fontWeight": "700",
+        },
+        Object {
+          "color": "#e3e3e3",
+        },
+      ]
+    }
+  >
+    Genre
+  </Text>
+  <Text
+    style={
+      Array [
+        Object {
+          "fontSize": 27,
+          "marginBottom": 8,
+        },
+        Object {
+          "color": "#e3e3e3",
+        },
+      ]
+    }
+  >
+    genre1
+  </Text>
+  <Text
+    style={
+      Array [
+        Object {
+          "fontSize": 27,
+          "fontWeight": "700",
+        },
+        Object {
+          "color": "#e3e3e3",
+        },
+      ]
+    }
+  >
+    Synopsis
+  </Text>
+  <Text
+    style={
+      Array [
+        Object {
+          "fontSize": 27,
+          "marginBottom": 8,
+        },
+        Object {
+          "color": "#e3e3e3",
+        },
+      ]
+    }
+  >
+    synopsis
+  </Text>
+</View>
+`;

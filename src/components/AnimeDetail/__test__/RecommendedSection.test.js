@@ -1,5 +1,5 @@
 import React from "react";
-import CharactersSection from "../CharactersSection";
+import RecommendedSection from "../RecommendedSection";
 import { JikanApi } from "../../../services/JikanApi";
 import { render, act, screen, waitFor } from "@testing-library/react-native";
 
@@ -21,13 +21,13 @@ jest.mock("../../../contexts/ThemeContext", () => {
 });
 
 jest.mock("../../../services/JikanApi");
-describe("<CharactersSection />", () => {
+describe("<RecommendedSection />", () => {
   afterEach(() => {
     jest.clearAllMocks();
   });
 
   it("should match snapshot", async () => {
-    render(<CharactersSection mal_id={1} />);
+    render(<RecommendedSection mal_id={1} />);
 
     await waitFor(() => {
       expect(screen.toJSON()).toMatchSnapshot();
@@ -35,36 +35,20 @@ describe("<CharactersSection />", () => {
   });
 
   it("should render loading before the result is returned from the API", async () => {
-    const { getByAccessibilityHint } = render(<CharactersSection mal_id={1} />);
+    const { getByAccessibilityHint } = render(
+      <RecommendedSection mal_id={1} />
+    );
 
     await act(async () => {
       expect(getByAccessibilityHint("loading")).toBeTruthy();
     });
   });
 
-  it("should call fethAnimeCharacters API once when rendered", async () => {
-    // JikanApi.fetchAnimeCharacters.mockResolvedValue({
-    //   data: [
-    //     {
-    //       data: {
-    //         character: {
-    //           images: {
-    //             jpg: {
-    //               image_url: "test url",
-    //             },
-    //           },
-    //           name: "name",
-    //           animeUrl: "url",
-    //         },
-    //       },
-    //     },
-    //   ],
-    // });
-
-    render(<CharactersSection mal_id={1} />);
+  it("should call fetchRecommendedAnime API once when rendered", async () => {
+    render(<RecommendedSection mal_id={1} />);
 
     await act(async () => {
-      expect(JikanApi.fetchAnimeCharacters).toHaveBeenCalledTimes(1);
+      expect(JikanApi.fetchRecommendedAnime).toHaveBeenCalledTimes(1);
     });
   });
 });

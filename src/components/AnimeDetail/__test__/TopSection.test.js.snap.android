@@ -1,0 +1,391 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TopSection /> should match snapshot 1`] = `
+<View
+  style={
+    Object {
+      "flexDirection": "row",
+      "marginBottom": 5,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "flex": 3,
+        "marginRight": 20,
+      }
+    }
+  >
+    <Image
+      source={
+        Object {
+          "uri": "test url",
+        }
+      }
+      style={
+        Object {
+          "aspectRatio": 0.6666666666666666,
+          "resizeMode": "stretch",
+          "width": "100%",
+        }
+      }
+    />
+  </View>
+  <View
+    style={
+      Object {
+        "flex": 5,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "flexDirection": "row",
+          "marginBottom": 5,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "flex": 1,
+            "flexDirection": "column",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Array [
+                Object {
+                  "fontWeight": "700",
+                },
+                Object {
+                  "fontSize": 26,
+                },
+              ],
+              Object {
+                "color": "#e3e3e3",
+              },
+            ]
+          }
+        >
+          Type
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "fontSize": 26,
+              },
+              Object {
+                "color": "#e3e3e3",
+              },
+            ]
+          }
+        >
+          type
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "flex": 1,
+            "flexDirection": "column",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Array [
+                Object {
+                  "fontWeight": "700",
+                },
+                Object {
+                  "fontSize": 26,
+                },
+              ],
+              Object {
+                "color": "#e3e3e3",
+              },
+            ]
+          }
+        >
+          Episodes
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "fontSize": 26,
+              },
+              Object {
+                "color": "#e3e3e3",
+              },
+            ]
+          }
+        >
+          1
+        </Text>
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "flexDirection": "row",
+          "marginBottom": 5,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "flex": 1,
+            "flexDirection": "column",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Array [
+                Object {
+                  "fontWeight": "700",
+                },
+                Object {
+                  "fontSize": 26,
+                },
+              ],
+              Object {
+                "color": "#e3e3e3",
+              },
+            ]
+          }
+        >
+          Year
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "fontSize": 26,
+              },
+              Object {
+                "color": "#e3e3e3",
+              },
+            ]
+          }
+        >
+          1998
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "flex": 1,
+            "flexDirection": "column",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Array [
+                Object {
+                  "fontWeight": "700",
+                },
+                Object {
+                  "fontSize": 26,
+                },
+              ],
+              Object {
+                "color": "#e3e3e3",
+              },
+            ]
+          }
+        >
+          Studio
+        </Text>
+        <Text
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "fontSize": 26,
+              },
+              Object {
+                "color": "#e3e3e3",
+              },
+            ]
+          }
+        >
+          studio
+        </Text>
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "flexDirection": "row",
+          "marginBottom": 5,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "flex": 1,
+            "flexDirection": "column",
+          }
+        }
+      >
+        <Text
+          numberOfLines={1}
+          style={
+            Array [
+              Array [
+                Object {
+                  "fontWeight": "700",
+                },
+                Object {
+                  "fontSize": 26,
+                },
+              ],
+              Object {
+                "color": "#e3e3e3",
+              },
+            ]
+          }
+        >
+          Age rating
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "fontSize": 26,
+              },
+              Object {
+                "color": "#e3e3e3",
+              },
+            ]
+          }
+        >
+          age rating
+        </Text>
+      </View>
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "flexDirection": "row",
+            "marginBottom": 5,
+          },
+          Object {
+            "justifyContent": "space-between",
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Object {
+            "flex": 1,
+            "flexDirection": "column",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Array [
+                Object {
+                  "fontWeight": "700",
+                },
+                Object {
+                  "fontSize": 26,
+                },
+              ],
+              Object {
+                "color": "#e3e3e3",
+              },
+            ]
+          }
+        >
+          Rank
+        </Text>
+        <Text
+          style={
+            Array [
+              Array [
+                Object {
+                  "fontSize": 45,
+                },
+                Object {
+                  "fontWeight": "700",
+                },
+              ],
+              Object {
+                "color": "#e3e3e3",
+              },
+            ]
+          }
+        >
+          # 1
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "flex": 1,
+            "flexDirection": "column",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Array [
+                Object {
+                  "fontWeight": "700",
+                },
+                Object {
+                  "fontSize": 26,
+                },
+              ],
+              Object {
+                "color": "#e3e3e3",
+              },
+            ]
+          }
+        >
+          Rating
+        </Text>
+        <Text
+          style={
+            Array [
+              Array [
+                Object {
+                  "fontSize": 45,
+                },
+                Object {
+                  "fontWeight": "700",
+                },
+              ],
+              Object {
+                "color": "#e3e3e3",
+              },
+            ]
+          }
+        >
+          1.0 / 10
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;
