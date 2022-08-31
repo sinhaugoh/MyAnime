@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CharactersSection /> should match snapshot 1`] = `
+Array [
+  <Text
+    style={
+      Array [
+        Object {
+          "fontSize": 27,
+          "fontWeight": "700",
+        },
+        Object {
+          "color": "#e3e3e3",
+        },
+      ]
+    }
+  >
+    Characters
+  </Text>,
+  <ActivityIndicator
+    accessibilityHint="loading"
+    size="large"
+    style={
+      Object {
+        "backgroundColor": "#242C33",
+        "flex": 1,
+      }
+    }
+  />,
+]
+`;

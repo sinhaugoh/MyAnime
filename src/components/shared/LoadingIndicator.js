@@ -5,7 +5,13 @@ import { useTheme } from "../../contexts/ThemeContext";
 export default function LoadingIndicator() {
   const { theme } = useTheme();
   const themedStyle = styles(theme);
-  return <ActivityIndicator size="large" style={themedStyle.container} />;
+  return (
+    <ActivityIndicator
+      size="large"
+      accessibilityHint="loading"
+      style={themedStyle.container}
+    />
+  );
 }
 
 const styles = (theme) =>
