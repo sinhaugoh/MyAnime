@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ThemedText /> should match snapshot 1`] = `
+<Text
+  style={
+    Array [
+      undefined,
+      Object {
+        "color": "#e3e3e3",
+      },
+    ]
+  }
+/>
+`;

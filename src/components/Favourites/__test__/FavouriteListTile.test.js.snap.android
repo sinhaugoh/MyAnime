@@ -1,0 +1,274 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FavouriteListTile /> should match snapshot 1`] = `
+<View
+  style={
+    Array [
+      Array [
+        Object {},
+        Object {
+          "flexDirection": "row",
+          "marginBottom": 8,
+        },
+      ],
+      Object {
+        "backgroundColor": "#242C33",
+      },
+    ]
+  }
+>
+  <Image
+    source={
+      Object {
+        "uri": "image url",
+      }
+    }
+    style={
+      Object {
+        "flex": 3,
+        "height": 150,
+      }
+    }
+  />
+  <View
+    style={
+      Object {
+        "flex": 6,
+        "marginLeft": 5,
+        "marginRight": 15,
+      }
+    }
+  >
+    <Text
+      ellipsizeMode="tail"
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "fontSize": 32,
+            "fontWeight": "700",
+            "marginBottom": 8,
+          },
+          Object {
+            "color": "#e3e3e3",
+          },
+        ]
+      }
+    >
+      title
+    </Text>
+    <View
+      style={
+        Object {
+          "flexDirection": "row",
+          "marginBottom": 5,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "flex": 1,
+            "flexDirection": "column",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "fontSize": 26,
+                "fontWeight": "700",
+              },
+              Object {
+                "color": "#e3e3e3",
+              },
+            ]
+          }
+        >
+          Progress
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "fontSize": 26,
+              },
+              Object {
+                "color": "#e3e3e3",
+              },
+            ]
+          }
+        >
+          Episode 1
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "flex": 1,
+            "flexDirection": "column",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "fontSize": 26,
+                "fontWeight": "700",
+              },
+              Object {
+                "color": "#e3e3e3",
+              },
+            ]
+          }
+        >
+          My rating
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "fontSize": 26,
+              },
+              Object {
+                "color": "#e3e3e3",
+              },
+            ]
+          }
+        >
+          5 / 10
+        </Text>
+      </View>
+    </View>
+    <View
+      style={Object {}}
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "fontSize": 26,
+              "fontWeight": "700",
+            },
+            Object {
+              "color": "#e3e3e3",
+            },
+          ]
+        }
+      >
+        Note to myself
+      </Text>
+      <Text
+        style={
+          Array [
+            Object {
+              "fontSize": 26,
+            },
+            Object {
+              "color": "#e3e3e3",
+            },
+          ]
+        }
+      >
+        note
+      </Text>
+    </View>
+  </View>
+  <View>
+    <View
+      accessibilityLabel="edit"
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Array [
+          Object {
+            "overflow": "hidden",
+          },
+          Object {
+            "backgroundColor": "transparent",
+            "borderRadius": 5,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "flex-start",
+              "padding": 8,
+            },
+            Object {
+              "backgroundColor": "transparent",
+              "borderRadius": 5,
+            },
+            Object {
+              "marginBottom": 15,
+              "padding": 0,
+            },
+          ]
+        }
+      >
+        <Text />
+      </View>
+    </View>
+    <View
+      accessibilityLabel="remove"
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Array [
+          Object {
+            "overflow": "hidden",
+          },
+          Object {
+            "backgroundColor": "transparent",
+            "borderRadius": 5,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "flex-start",
+              "padding": 8,
+            },
+            Object {
+              "backgroundColor": "transparent",
+              "borderRadius": 5,
+            },
+            Object {
+              "marginBottom": 15,
+              "padding": 0,
+            },
+          ]
+        }
+      >
+        <Text />
+      </View>
+    </View>
+  </View>
+</View>
+`;

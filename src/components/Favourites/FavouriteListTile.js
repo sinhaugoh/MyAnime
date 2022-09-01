@@ -48,6 +48,7 @@ export default function FavouriteListTile({
       <View>
         <FontAwesome5.Button
           name="edit"
+          accessibilityLabel="edit"
           size={20}
           color={theme.primaryTextColor}
           style={styles.iconButton}
@@ -58,6 +59,7 @@ export default function FavouriteListTile({
         />
         <FontAwesome5.Button
           name="trash-alt"
+          accessibilityLabel="remove"
           size={20}
           color={theme.primaryTextColor}
           style={styles.iconButton}

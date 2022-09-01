@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LoadingIndicator /> should match snapshot 1`] = `
+<ActivityIndicator
+  accessibilityHint="loading"
+  size="large"
+  style={
+    Object {
+      "backgroundColor": "#242C33",
+      "flex": 1,
+    }
+  }
+/>
+`;

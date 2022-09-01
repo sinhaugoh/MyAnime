@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CardTile /> should match snapshot 1`] = `
+<View
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "marginRight": 8,
+      "opacity": 1,
+      "width": 150,
+    }
+  }
+>
+  <Image
+    source={
+      Object {
+        "uri": "image url",
+      }
+    }
+    style={
+      Object {
+        "aspectRatio": 0.6666666666666666,
+        "marginBottom": 8,
+        "resizeMode": "cover",
+        "width": "100%",
+      }
+    }
+  />
+  <Text
+    ellipsizeMode="tail"
+    numberOfLines={2}
+    style={
+      Array [
+        Object {
+          "fontSize": 26,
+        },
+        Object {
+          "color": "#e3e3e3",
+        },
+      ]
+    }
+  >
+    title
+  </Text>
+</View>
+`;
